@@ -6,6 +6,7 @@ import { ToastProvider } from "@/components/ui/toast-provider";
 import { Toaster } from "@/components/ui/toast";
 import { ThemeInit } from "@/components/ui/theme-init";
 import AIChatbox from "@/components/AIChatbox";
+import { I18nProvider } from "@/components/I18nProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,13 +34,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        <ThemeInit />
-        <ToastProvider>
-          {children}
-          <Toaster />
-          <AIChatbox />
-          {/* <AuthDebug /> */}
-        </ToastProvider>
+        <I18nProvider>
+          <ThemeInit />
+          <ToastProvider>
+            {children}
+            <Toaster />
+            <AIChatbox />
+            {/* <AuthDebug /> */}
+          </ToastProvider>
+        </I18nProvider>
       </body>
     </html>
   );

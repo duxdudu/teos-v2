@@ -1,11 +1,11 @@
 "use client";
 
 import { useState, useRef, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
-import { Badge } from '@/components/ui/badge';
-import { MessageCircle, X, Send, Bot, User, Loader2, Sparkles, Camera, Heart, ThumbsUp, Phone, Mail } from 'lucide-react';
+import { MessageCircle, X, Send, Bot, Loader2, Phone, Mail } from 'lucide-react';
+import Image from 'next/image';
 
 interface Message {
   id: string;
@@ -19,20 +19,14 @@ interface AIChatboxProps {
   className?: string;
 }
 
-export default function AIChatbox({ className }: AIChatboxProps) {
+export default function AIChatbox({ }: AIChatboxProps) {
+  const { t, i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<Message[]>([
-    {
-      id: '1',
-      content: "Hi! I'm your AI photography assistant. I can help you with:\n\n📸 Photography services & pricing\n🎯 Portfolio & style questions\n📅 Booking & availability\n💡 Photography tips & advice\n\nHow can I help you today?",
-      role: 'assistant',
-      timestamp: new Date()
-    }
-  ]);
+  const [messages, setMessages] = useState<Message[]>([]);
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isTyping, setIsTyping] = useState(false);
-  const [showSuggestions, setShowSuggestions] = useState(true);
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
 
@@ -43,6 +37,25 @@ export default function AIChatbox({ className }: AIChatboxProps) {
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
+
+  // Ensure welcome message uses the active language and updates on language change
+  useEffect(() => {
+    setMessages(prev => {
+      const hasWelcome = prev.some(m => m.id === 'welcome');
+      if (hasWelcome) {
+        return prev.map(m => m.id === 'welcome' ? { ...m, content: t('chat.welcome') } : m);
+      }
+      return [
+        {
+          id: 'welcome',
+          content: t('chat.welcome'),
+          role: 'assistant',
+          timestamp: new Date()
+        },
+        ...prev
+      ];
+    });
+  }, [i18n.language, t]);
 
   useEffect(() => {
     if (isOpen && inputRef.current) {
@@ -65,7 +78,7 @@ export default function AIChatbox({ className }: AIChatboxProps) {
     setInputValue('');
     setIsLoading(true);
     setIsTyping(true);
-    setShowSuggestions(false);
+
 
     try {
       const response = await fetch('/api/ai-chat', {
@@ -75,7 +88,8 @@ export default function AIChatbox({ className }: AIChatboxProps) {
         },
         body: JSON.stringify({
           message: userMessage.content,
-          conversationHistory: messages.map(m => ({ role: m.role, content: m.content }))
+          conversationHistory: messages.map(m => ({ role: m.role, content: m.content })),
+          lang: i18n.language
         }),
       });
 
@@ -89,7 +103,7 @@ export default function AIChatbox({ className }: AIChatboxProps) {
       setTimeout(() => {
         const assistantMessage: Message = {
           id: (Date.now() + 1).toString(),
-          content: data.response || "I'm sorry, I couldn't process your request. Please try again.",
+          content: data.response || t('chat.genericErrorShort'),
           role: 'assistant',
           timestamp: new Date(),
           reactions: ['👍', '💡', '📸']
@@ -104,7 +118,7 @@ export default function AIChatbox({ className }: AIChatboxProps) {
       console.error('AI Chat Error:', error);
       const errorMessage: Message = {
         id: (Date.now() + 1).toString(),
-        content: "I'm sorry, I'm experiencing technical difficulties. Please try again later or contact us directly at helloteofly@gmail.com.",
+        content: t('chat.genericErrorLong'),
         role: 'assistant',
         timestamp: new Date()
       };
@@ -135,10 +149,7 @@ export default function AIChatbox({ className }: AIChatboxProps) {
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
   };
 
-  const handleQuickAction = (action: string) => {
-    setInputValue(action);
-    setShowSuggestions(false);
-  };
+
 
   const handleContactAction = (type: 'phone' | 'email') => {
     if (type === 'phone') {
@@ -161,13 +172,13 @@ export default function AIChatbox({ className }: AIChatboxProps) {
     <>
       {/* Floating Chat Button */}
       {/* Help Card */}
-      <div className="fixed bottom-20 right-2 z-50 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 p-2 max-w-20">
+      <div className="fixed bottom-16 right-2 z-50 bg-white dark:bg-gray-800 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700 p-2 max-w-20 animate-bounce">
         <div className="flex items-center gap-1 mb-1">
           <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse"></div>
-          <span className="text-xs text-gray-600 dark:text-gray-400">Online</span>
+          <span className="text-xs text-gray-600 dark:text-gray-400">{t('chat.online')}</span>
         </div>
         <p className="text-xs font-medium text-gray-900 dark:text-gray-100">
-          Need help? Chat now! 💬
+          {t('chat.helperCardTitle')}
         </p>
       </div>
 
@@ -177,7 +188,7 @@ export default function AIChatbox({ className }: AIChatboxProps) {
         className={`fixed bottom-4 right-2 z-50 w-14 h-14 rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 bg-gradient-to-r from-blue-500 to-purple-600 hover:from-blue-600 hover:to-purple-700 ${
           isOpen ? 'opacity-100 pointer-events-none' : 'opacity-100'
         }`}
-        aria-label="Open AI Chat Assistant"
+        aria-label={t('chat.openButtonAria')}
       >
         <MessageCircle className="w-6 h-6 text-white" />
         <div className="absolute -top-1 -right-1 w-6 h-6 bg-red-400 rounded-full animate-pulse">1</div>
@@ -191,14 +202,20 @@ export default function AIChatbox({ className }: AIChatboxProps) {
           <div className="bg-gradient-to-r from-blue-500 to-purple-600 p-4 text-white">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center">
-                  <Bot className="w-5 h-5" />
+                <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center overflow-hidden">
+                  <Image 
+                    src="/logo1.png" 
+                    alt="AI Assistant" 
+                    width={25} 
+                    height={25} 
+                    className="rounded-full"
+                  />
                 </div>
                 <div>
-                  <h3 className="font-semibold text-sm">Teos AI Assistant</h3>
+                  <h3 className="font-semibold text-sm">{t('chat.title')}</h3>
                   <div className="flex items-center gap-1 text-xs opacity-90">
                     <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                    <span>Online</span>
+                    <span>{t('chat.online')}</span>
                   </div>
                 </div>
               </div>
@@ -229,7 +246,15 @@ export default function AIChatbox({ className }: AIChatboxProps) {
                 >
                   <div className="flex items-start gap-2">
                     {message.role === 'assistant' && (
-                      <Bot className="w-4 h-4 mt-0.5 text-blue-500 flex-shrink-0" />
+                      <div className="w-8 h-8 bg-white/20 rounded-full flex items-center justify-center overflow-hidden">
+                      <Image 
+                        src="/logo1.png" 
+                        alt="AI Assistant" 
+                        width={20} 
+                        height={20} 
+                        className="rounded-full"
+                      />
+                    </div>
                     )}
                     <div className="flex-1">
                       <p className="text-sm whitespace-pre-wrap">{message.content}</p>
@@ -305,7 +330,7 @@ export default function AIChatbox({ className }: AIChatboxProps) {
                 onClick={() => handleContactAction('phone')}
               >
                 <Phone className="w-3 h-3 mr-1" />
-                Call Us
+                {t('chat.callUs')}
               </Button>
               <Button
                 type="button"
@@ -315,7 +340,7 @@ export default function AIChatbox({ className }: AIChatboxProps) {
                 onClick={() => handleContactAction('email')}
               >
                 <Mail className="w-3 h-3 mr-1" />
-                Email
+                {t('chat.email')}
               </Button>
             </div>
           </div>
@@ -328,7 +353,7 @@ export default function AIChatbox({ className }: AIChatboxProps) {
                 value={inputValue}
                 onChange={(e) => setInputValue(e.target.value)}
                 onKeyPress={handleKeyPress}
-                placeholder="Ask me about photography services..."
+                placeholder={t('chat.placeholder')}
                 className="min-h-[40px] max-h-24 resize-none border-gray-300 dark:border-gray-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                 disabled={isLoading}
               />

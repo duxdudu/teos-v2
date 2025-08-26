@@ -1,7 +1,7 @@
-/* eslint-disable react/no-unescaped-entities */
 "use client";
 
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -39,6 +39,7 @@ import Link from "next/link";
 import { MobileNav } from "@/components/mobile-nav";
 import { FaFacebook, FaLinkedin } from "react-icons/fa";
 import { BsSnapchat } from "react-icons/bs";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 // import TestimonialsShowcase from "@/app/components/TestimonialsShowcase";
 import api from "@/lib/utils/axios-config";
 import TestimonialsShowcase from "./components/TestimonialsShowcase";
@@ -66,6 +67,7 @@ interface PortfolioProject {
 }
 
 export default function Home() {
+  const { t } = useTranslation();
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [theme, setTheme] = useState(
     typeof window !== "undefined" && localStorage.getItem("theme")
@@ -379,16 +381,16 @@ This message was sent from the Teoflys Photography website contact form.
   };
 
   return (
-    <div className="min-h-screen pt-20 bg-white text-black dark:bg-black dark:text-white animate-fade-in">
+    <div className="min-h-screen pt-20 bg-white text-black dark:bg-black dark:text-white ">
       {/* Header */}
-      <header className="fixed top-0 left-0 w-full flex items-center justify-between px-4 sm:px-6 py-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-black z-50 animate-slide-down">
+      <header className="fixed top-0 left-0 w-full flex items-center justify-between px-4 sm:px-6 py-4 border-b border-gray-200 dark:border-gray-800 bg-white dark:bg-black z-50 ">
         <div className="flex justify-center">
           <Image 
             src="/logo1.png" 
             alt="Teoflys Photography Logo" 
-            width={64}
-            height={64}
-            className="h-16 w-auto object-contain animate-pulse"
+            width={120}
+            height={120}
+            className="h-16 w-auto ml-2 object-contain "
           />
         </div>
 
@@ -398,48 +400,50 @@ This message was sent from the Teoflys Photography website contact form.
             href="#"
             className="text-gray-700 dark:text-gray-300 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors duration-300"
           >
-            HOME
+            {t('common.home')}
           </Link>
           <Link
             href="#about"
             className="text-gray-700 dark:text-gray-300 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors duration-300"
           >
-            ABOUT US
+            {t('common.aboutUs')}
           </Link>
           <Link
             href="#portfolio"
             className="text-gray-700 dark:text-gray-300 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors duration-300"
           >
-            PORTFOLIO
+            {t('common.portfolio')}
           </Link>
           <Link
             href="#gallery"
             className="text-gray-700 dark:text-gray-300 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors duration-300"
           >
-            GALLERY
+            {t('common.gallery')}
           </Link>
           <Link
             href="#services"
             className="text-gray-700 dark:text-gray-300 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors duration-300"
           >
-            SERVICES
+            {t('common.services')}
           </Link>
           <Link
             href="/testimonials"
             className="text-gray-700 dark:text-gray-300 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors duration-300"
           >
-            TESTIMONIALS
+            {t('common.testimonials')}
           </Link>
           <Link
             href="#contact"
             className="text-gray-700 dark:text-gray-300 hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors duration-300"
           >
-            CONTACT
+            {t('common.contact')}
           </Link>
         </nav>
 
         {/* Mobile Menu Button & Contact */}
         <div className="flex items-center gap-4">
+          {/* Language Switcher */}
+          <LanguageSwitcher />
           {/* <Link href="#contact">
             <Button className="bg-yellow-500 dark:bg-yellow-400 text-black hover:bg-yellow-600 dark:hover:bg-yellow-500 text-xs sm:text-sm px-3 sm:px-4 transition-all duration-300 hover:scale-105">
               CONTACT US
@@ -480,7 +484,7 @@ This message was sent from the Teoflys Photography website contact form.
       <section className="px-4 sm:px-6 py-8 sm:py-16 bg-gray-100 dark:bg-black animate-fade-in">
         <div className="max-w-7xl mx-auto">
           <div className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 mb-2 animate-fade-in-up">
-            PREMIUM PHOTOGRAPHY BY
+            {t('hero.premiumPhotography')}
           </div>
           <div className="flex flex-col xl:flex-row items-start justify-between mb-4 sm:mb-4">
             <h1 className="text-4xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 xl:mb-0 leading-tight text-gray-900 dark:text-white animate-fade-in-up">
@@ -511,24 +515,24 @@ This message was sent from the Teoflys Photography website contact form.
                      <source
                        media="(max-width: 640px)"
                        srcSet={currentSlide === 0 ? "/hero.png" : 
-                               currentSlide === 1 ? "/hero2.png" : 
-                               currentSlide === 2 ? "/hero3.png" : 
-                               currentSlide === 3 ? "/hero4.png" : "/hero1.png"}
+                               currentSlide === 1 ? "/hero3.png" : 
+                               currentSlide === 2 ? "/hero1.png" : 
+                               currentSlide === 3 ? "/hero4.png" : "/hero2.png"}
                      />
                      {/* Tablet */}
                      <source
                        media="(max-width: 1024px)"
                        srcSet={currentSlide === 0 ? "/hero.png" : 
-                               currentSlide === 1 ? "/hero2.png" : 
-                               currentSlide === 2 ? "/hero3.png" : 
-                               currentSlide === 3 ? "/hero4.png" : "/hero1.png"}
+                               currentSlide === 1 ? "/hero3.png" : 
+                               currentSlide === 2 ? "/hero1.png" : 
+                               currentSlide === 3 ? "/hero4.png" : "/hero2.png"}
                      />
                      {/* Desktop */}
                      <Image
                        src={currentSlide === 0 ? "/hero.png" : 
-                            currentSlide === 1 ? "/hero2.png" : 
-                            currentSlide === 2 ? "/hero3.png" : 
-                            currentSlide === 3 ? "/hero4.png" : "/hero1.png"}
+                        currentSlide === 1 ? "/hero3.png" : 
+                        currentSlide === 2 ? "/hero1.png" : 
+                        currentSlide === 3 ? "/hero4.png" : "/hero2.png"}
                        alt={`Photography Showcase ${currentSlide + 1}`}
                        width={1920}
                        height={1080}
@@ -542,16 +546,16 @@ This message was sent from the Teoflys Photography website contact form.
                   {/* Image Info */}
                   <div className="absolute bottom-6 left-6 text-white">
                     <h3 className="text-2xl font-bold mb-2">
-                      {currentSlide === 0 ? "Professional Photography" :
-                       currentSlide === 1 ? "Architectural Photography" :
-                       currentSlide === 2 ? "Nature Coverage" :
-                       currentSlide === 3 ? "Landscape Photography" : "Creative food Art"}
+                      {currentSlide === 0 ? t('hero.professionalPhotography') :
+                       currentSlide === 1 ? t('hero.architecturalPhotography') :
+                       currentSlide === 2 ? t('hero.natureCoverage') :
+                       currentSlide === 3 ? t('hero.landscapePhotography') : t('hero.creativeFoodArt')}
                     </h3>
                     <p className="text-gray-200 opacity-90">
-                      {currentSlide === 0 ? "Capture your special moments with style" :
-                       currentSlide === 1 ? "Professional Architectural Photography" :
-                       currentSlide === 2 ? "Complete Nature photography services" :
-                       currentSlide === 3 ? "Beautiful landscapes and nature shots" : "Unique food artistic perspectives"}
+                      {currentSlide === 0 ? t('hero.captureSpecialMoments') :
+                       currentSlide === 1 ? t('hero.professionalArchitectural') :
+                       currentSlide === 2 ? t('hero.completeNature') :
+                       currentSlide === 3 ? t('hero.beautifulLandscapes') : t('hero.uniqueFoodPerspectives')}
                     </p>
             </div>
           </div>
@@ -610,16 +614,16 @@ This message was sent from the Teoflys Photography website contact form.
               <source
                              media="(max-width: 640px)"
                              srcSet={index === 0 ? "/hero.png" : 
-                                     index === 1 ? "/hero2.png" : 
-                                     index === 2 ? "/hero3.png" : 
-                                     index === 3 ? "/hero4.png" : "/hero1.png"}
+                                     index === 1 ? "/hero3.png" : 
+                                     index === 2 ? "/hero1.png" : 
+                                     index === 3 ? "/hero4.png" : "/hero2.png"}
                            />
                            {/* Desktop Thumbnails */}
                            <Image
                              src={index === 0 ? "/hero.png" : 
-                                  index === 1 ? "/hero2.png" : 
-                                  index === 2 ? "/hero3.png" : 
-                                  index === 3 ? "/hero4.png" : "/hero1.png"}
+                                  index === 1 ? "/hero3.png" : 
+                                  index === 2 ? "/hero1.png" : 
+                                  index === 3 ? "/hero4.png" : "/hero2.png"}
                              alt={`Thumbnail ${index + 1}`}
                              width={80}
                              height={64}
@@ -658,52 +662,52 @@ This message was sent from the Teoflys Photography website contact form.
             <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-3">
               {[
                 { 
-                  label: "FOOD", 
+                  label: t('categories.food'), 
                   icon: "🍽️", 
                   link: "/services/food",
                   gradient: "from-orange-400 to-red-500"
                 },
                 { 
-                  label: "COMMERCIAL", 
+                  label: t('categories.commercial'), 
                   icon: "🏢", 
                   link: "/services/commercial",
                   gradient: "from-blue-500 to-purple-600"
                 },
                 { 
-                  label: "PRODUCT", 
+                  label: t('categories.product'), 
                   icon: "📦", 
                   link: "/services/commercial",
                   gradient: "from-green-400 to-teal-500"
                 },
                 { 
-                  label: "WEDDING", 
+                  label: t('categories.wedding'), 
                   icon: "💒", 
                   link: "/services/wedding",
                   gradient: "from-pink-400 to-rose-500"
                 },
                 { 
-                  label: "LANDSCAPE", 
+                  label: t('categories.landscape'), 
                   icon: "🏞️", 
                   link: "/services/landscape",
                   gradient: "from-emerald-400 to-green-600"
                 },
                 { 
-                  label: "ARCHITECTURAL", 
+                  label: t('categories.architectural'), 
                   icon: "🏛️", 
                   link: "/services/architectural",
                   gradient: "from-slate-500 to-gray-700"
                 },
                 { 
-                  label: "PORTRAIT", 
+                  label: t('categories.portrait'), 
                   icon: "👤", 
                   link: "/services/portrait",
                   gradient: "from-amber-400 to-yellow-500",
                   show: "hidden lg:block"
                 },
                 { 
-                  label: "EVENT", 
+                  label: t('categories.event'), 
                   icon: "🎉", 
-                  link: "/services/event",
+                  link: "/services/events",
                   gradient: "from-indigo-400 to-purple-500",
                   show: "hidden lg:block"
                 }
@@ -735,7 +739,7 @@ This message was sent from the Teoflys Photography website contact form.
                   </div>
                   
                   {/* Hover Effect Overlay */}
-                  <div className="absolute inset-0 bg-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="absolute inset-0 bg-white/10 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300"></div>
               </Link>
             ))}
             </div>
@@ -777,7 +781,7 @@ This message was sent from the Teoflys Photography website contact form.
               variant="outline"
               className="border-yellow-500 dark:border-yellow-400 text-yellow-500 dark:text-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-400 hover:text-white dark:hover:text-black bg-transparent text-sm sm:text-base px-4 sm:px-6 transition-all duration-300 hover:scale-105"
             >
-              CONNECT WITH US
+              {t('common.connectWithUs')}
             </Button></a>
           </div>
 
@@ -795,21 +799,16 @@ This message was sent from the Teoflys Photography website contact form.
             <div className="space-y-6 sm:space-y-8 animate-fade-in-right">
               <div>
                 <h3 className="text-yellow-500 dark:text-yellow-400 text-base sm:text-lg font-semibold mb-3 sm:mb-4 flex gap-2 items-center">
-                  <StarIcon /> Introduction
+                  <StarIcon /> {t('about.introduction')}
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 leading-relaxed text-sm sm:text-base">
-                  we are a professional photographers with over 3 years of
-                  experience in capturing life&apos;s most precious moments. My
-                  passion lies in creating timeless images that tell compelling
-                  stories. Whether it&apos;s a wedding, corporate event, or
-                  personal portrait session, I bring creativity, technical
-                  expertise, and a keen eye for detail to every project.
+                  {t('about.introductionText')}
                 </p>
               </div>
 
               <div>
                 <h3 className="text-yellow-500 dark:text-yellow-400 text-base sm:text-lg font-semibold mb-3 sm:mb-4 flex gap-2 items-center ">
-                  <StarIcon /> Contact Informations
+                  <StarIcon /> {t('about.contactInformation')}
                 </h3>
                 <div className="">
                   <div className="flex flex-row items-center justify-between w-full space-x-2 sm:space-x-4 md:space-x-6">
@@ -820,7 +819,7 @@ This message was sent from the Teoflys Photography website contact form.
                       <div className="flex items-center gap-1 sm:gap-2">
                         <Mail className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-yellow-500 dark:text-yellow-400 flex-shrink-0" />
                         <span className="text-gray-700 dark:text-gray-300 text-xs sm:text-sm">
-                          Email
+                          {t('about.email')}
                         </span>
                       </div>
                       <span className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm md:text-base truncate hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors">
@@ -834,7 +833,7 @@ This message was sent from the Teoflys Photography website contact form.
                       <div className="flex items-center gap-1 sm:gap-2">
                         <Phone className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-yellow-500 dark:text-yellow-400 flex-shrink-0" />
                         <span className="text-gray-700 dark:text-gray-300 text-xs sm:text-sm">
-                          Phone
+                          {t('about.phone')}
                         </span>
                       </div>
                       <span className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm md:text-base truncate hover:text-yellow-500 dark:hover:text-yellow-400 transition-colors">
@@ -845,11 +844,11 @@ This message was sent from the Teoflys Photography website contact form.
                       <div className="flex items-center gap-1 sm:gap-2">
                         <MapPin className="w-3 h-3 sm:w-4 sm:h-4 md:w-5 md:h-5 text-yellow-500 dark:text-yellow-400 flex-shrink-0" />
                         <span className="text-gray-700 dark:text-gray-300 text-xs sm:text-sm">
-                          Address
+                          {t('about.address')}
                         </span>
                       </div>
                       <span className="text-gray-600 dark:text-gray-400 text-xs sm:text-sm md:text-base truncate">
-                        Marroco, Rabat
+                        {t('about.moroccoRabat')}
                       </span>
                     </div>
                   </div>
@@ -919,7 +918,7 @@ This message was sent from the Teoflys Photography website contact form.
                         className="p-[2px] bg-gradient-to-r from-yellow-500 via-red-500 to-purple-600 rounded-md w-full sm:w-auto transition-all duration-300 hover:scale-105"
                       >
                         <button className="bg-white dark:bg-black text-yellow-500 dark:text-yellow-400 px-4 sm:px-6 py-2 rounded-md w-full transition-all duration-300 hover:scale-105 hover:brightness-110 text-sm sm:text-base">
-                          Our Gallery
+                          {t('about.ourGallery')}
                         </button>
                       </a>
                       {/* Button 2 */}
@@ -950,11 +949,10 @@ This message was sent from the Teoflys Photography website contact form.
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              MY PHOTOGRAPHY SERVICES
+              {t('services.title')}
             </h2>
             <p className="text-gray-600 dark:text-gray-400 text-lg max-w-2xl mx-auto">
-              Professional photography services tailored to capture your special
-              moments with creativity and excellence
+              {t('services.subtitle')}
             </p>
           </div>
 
@@ -966,34 +964,33 @@ This message was sent from the Teoflys Photography website contact form.
                   <span className="text-2xl">💒</span>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  Wedding Photography
+                  {t('services.wedding.title')}
                 </h3>
               </div>
               <p className="text-gray-600 dark:text-gray-400 mb-4">
-                Capture your special day with timeless elegance. From engagement
-                shoots to the big day, I document every precious moment.
+                {t('services.wedding.description')}
               </p>
               <ul className="space-y-2 text-sm text-gray-500 dark:text-gray-400 mb-6">
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Engagement Sessions
+                  {t('services.wedding.features.0')}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Wedding Day Coverage
+                  {t('services.wedding.features.1')}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Bridal Portraits
+                  {t('services.wedding.features.2')}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Reception Photography
+                  {t('services.wedding.features.3')}
                 </li>
               </ul>
               <div className="absolute bottom-4 right-4">
                 <a href="/services/wedding" className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-pink-400 to-rose-500 text-white text-sm font-medium rounded-lg hover:from-pink-500 hover:to-rose-600 transition-all duration-300 hover:scale-105 shadow-md">
-                  More Details
+                  {t('common.moreDetails')}
                 </a>
               </div>
             </div>
@@ -1005,34 +1002,33 @@ This message was sent from the Teoflys Photography website contact form.
                   <span className="text-2xl">👤</span>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  Portrait Photography
+                  {t('services.portrait.title')}
                 </h3>
               </div>
               <p className="text-gray-600 dark:text-gray-400 mb-4">
-                Professional portraits that capture personality and emotion.
-                Perfect for personal branding and family memories.
+                {t('services.portrait.description')}
               </p>
               <ul className="space-y-2 text-sm text-gray-500 dark:text-gray-400 mb-6">
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Professional Headshots
+                  {t('services.portrait.features.0')}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Family Portraits
+                  {t('services.portrait.features.1')}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Senior Photos
+                  {t('services.portrait.features.2')}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Personal Branding
+                  {t('services.portrait.features.3')}
                 </li>
               </ul>
               <div className="absolute bottom-4 right-4">
                 <a href="/services/portrait" className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-blue-400 to-indigo-500 text-white text-sm font-medium rounded-lg hover:from-blue-500 hover:to-indigo-600 transition-all duration-300 hover:scale-105 shadow-md">
-                  More Details
+                  {t('common.moreDetails')}
                 </a>
               </div>
             </div>
@@ -1044,34 +1040,33 @@ This message was sent from the Teoflys Photography website contact form.
                   <span className="text-2xl">🎭</span>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  Event Photography
+                  {t('services.event.title')}
                 </h3>
               </div>
               <p className="text-gray-600 dark:text-gray-400 mb-4">
-                Dynamic event coverage for corporate functions, parties, and
-                special occasions. Professional lighting and equipment.
+                {t('services.event.description')}
               </p>
               <ul className="space-y-2 text-sm text-gray-500 dark:text-gray-400 mb-6">
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Corporate Events
+                  {t('services.event.features.0')}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Birthday Parties
+                  {t('services.event.features.1')}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Anniversaries
+                  {t('services.event.features.2')}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Special Occasions
+                  {t('services.event.features.3')}
                 </li>
               </ul>
               <div className="absolute bottom-4 right-4">
                 <a href="/services/events" className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-400 to-violet-500 text-white text-sm font-medium rounded-lg hover:from-purple-500 hover:to-violet-600 transition-all duration-300 hover:scale-105 shadow-md">
-                  More Details
+                  {t('common.moreDetails')}
                 </a>
               </div>
             </div>
@@ -1083,34 +1078,33 @@ This message was sent from the Teoflys Photography website contact form.
                   <span className="text-2xl">🏢</span>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  Commercial Photography
+                  {t('services.commercial.title')}
                 </h3>
               </div>
               <p className="text-gray-600 dark:text-gray-400 mb-4">
-                High-quality product and business photography for marketing,
-                advertising, and brand development.
+                {t('services.commercial.description')}
               </p>
               <ul className="space-y-2 text-sm text-gray-500 dark:text-gray-400 mb-6">
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Product Photography
+                  {t('services.commercial.features.0')}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Real Estate
+                  {t('services.commercial.features.1')}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Restaurant & Food
+                  {t('services.commercial.features.2')}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Business Branding
+                  {t('services.commercial.features.3')}
                 </li>
               </ul>
               <div className="absolute bottom-4 right-4">
                 <a href="/services/commercial" className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-green-400 to-emerald-500 text-white text-sm font-medium rounded-lg hover:from-green-500 hover:to-emerald-600 transition-all duration-300 hover:scale-105 shadow-md">
-                  More Details
+                  {t('common.moreDetails')}
                 </a>
               </div>
             </div>
@@ -1122,34 +1116,33 @@ This message was sent from the Teoflys Photography website contact form.
                   <span className="text-2xl">🏔️</span>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  Landscape Photography
+                  {t('services.landscape.title')}
                 </h3>
               </div>
               <p className="text-gray-600 dark:text-gray-400 mb-4">
-                Breathtaking landscape and nature photography. From urban
-                cityscapes to serene natural settings.
+                {t('services.landscape.description')}
               </p>
               <ul className="space-y-2 text-sm text-gray-500 dark:text-gray-400 mb-6">
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Nature Landscapes
+                  {t('services.landscape.features.0')}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Urban Photography
+                  {t('services.landscape.features.1')}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Travel Photography
+                  {t('services.landscape.features.2')}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Aerial Shots
+                  {t('services.landscape.features.3')}
                 </li>
               </ul>
               <div className="absolute bottom-4 right-4">
                 <a href="/services/landscape" className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-white text-sm font-medium rounded-lg hover:from-yellow-500 hover:to-amber-600 transition-all duration-300 hover:scale-105 shadow-md">
-                  More Details
+                  {t('common.moreDetails')}
                 </a>
               </div>
             </div>
@@ -1161,34 +1154,33 @@ This message was sent from the Teoflys Photography website contact form.
                   <span className="text-2xl">🍽️</span>
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  Food Photography
+                  {t('services.food.title')}
                 </h3>
               </div>
               <p className="text-gray-600 dark:text-gray-400 mb-4">
-                Mouthwatering food photography for restaurants, chefs, and
-                culinary businesses. Professional styling and lighting.
+                {t('services.food.description')}
               </p>
               <ul className="space-y-2 text-sm text-gray-500 dark:text-gray-400 mb-6">
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Restaurant Menus
+                  {t('services.food.features.0')}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Chef Portraits
+                  {t('services.food.features.1')}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Food Styling
+                  {t('services.food.features.2')}
                 </li>
                 <li className="flex items-center gap-2">
                   <span className="w-2 h-2 bg-yellow-500 rounded-full flex-shrink-0"></span>
-                  Culinary Events
+                  {t('services.food.features.3')}
                 </li>
               </ul>
               <div className="absolute bottom-4 right-4">
                 <a href="/services/food" className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-orange-400 to-red-500 text-white text-sm font-medium rounded-lg hover:from-orange-500 hover:to-red-600 transition-all duration-300 hover:scale-105 shadow-md">
-                  More Details
+                  {t('common.moreDetails')}
                 </a>
               </div>
             </div>
@@ -1197,7 +1189,7 @@ This message was sent from the Teoflys Photography website contact form.
           {/* Call to Action */}
           <div className="text-center mt-12">
             <p className="text-gray-600 dark:text-gray-400 mb-6 text-lg">
-              Ready to capture your special moments?
+              {t('services.cta.readyToCapture')}
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a href="#contact">
@@ -1210,7 +1202,7 @@ This message was sent from the Teoflys Photography website contact form.
                 variant="outline"
                 className="border-yellow-500 dark:border-yellow-400 text-yellow-500 dark:text-yellow-400 hover:bg-yellow-500 dark:hover:bg-yellow-400 dark:hover:text-black hover:text-black px-8 py-3 text-lg font-semibold transition-all duration-300 hover:scale-105"
               >
-                View Portfolio
+                {t('common.viewPortfolio')}
               </Button>
               </a>
             </div>
@@ -1226,10 +1218,10 @@ This message was sent from the Teoflys Photography website contact form.
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              EXPLORE MY PHOTOGRAPHY WORK
+              {t('portfolio.title')}
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Discover my latest projects and creative endeavors across different photography styles
+              {t('portfolio.subtitle')}
             </p>
           </div>
 
@@ -1249,42 +1241,42 @@ This message was sent from the Teoflys Photography website contact form.
                     className="object-cover transition-transform duration-300 group-hover:scale-110"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="absolute bottom-4 left-4 right-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute bottom-4 left-4 right-4 text-white opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
                     <Badge className="bg-yellow-500 text-black mb-2 text-xs">
-                      {project.category}
+                      {t(`portfolio.projects.${project.id}.category`)}
                     </Badge>
-                    <p className="text-sm font-medium">Click to view gallery</p>
+                    <p className="text-sm font-medium">{t('portfolio.viewGallery')}</p>
                   </div>
-                  <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute top-4 right-4 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
                     <div className="bg-white/10 backdrop-blur-sm rounded-full p-2">
-                      <span className="text-white text-sm font-medium">{project.images.length} photos</span>
+                      <span className="text-white text-sm font-medium">{project.images.length} {t('portfolio.photos')}</span>
                     </div>
                   </div>
                 </div>
                 <CardContent className="p-4 sm:p-6">
                   <div className="mb-3">
                     <h3 className="font-bold text-lg mb-1 text-gray-900 dark:text-white group-hover:text-yellow-500 transition-colors duration-300">
-                      {project.title}
+                      {t(`portfolio.projects.${project.id}.title`)}
                     </h3>
                     <p className="text-sm text-gray-500 dark:text-gray-400 mb-2">
-                      {project.stats}
+                      {t(`portfolio.projects.${project.id}.stats`)}
                     </p>
                   </div>
                   <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-2">
-                    {project.description}
+                    {t(`portfolio.projects.${project.id}.description`)}
                   </p>
                   <div className="mt-4 flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <div className="w-2 h-2 bg-yellow-500 rounded-full"></div>
-                      <span className="text-xs text-gray-500 dark:text-gray-400">{project.date}</span>
+                      <span className="text-xs text-gray-500 dark:text-gray-400">{t(`portfolio.projects.${project.id}.date`)}</span>
                     </div>
                     <Button
                       size="sm"
                       variant="ghost"
                       className="text-yellow-500 hover:text-yellow-600 hover:bg-yellow-50 dark:hover:bg-yellow-900/20 p-2"
                     >
-                      View Gallery →
+                      {t('portfolio.viewGallery')} →
                     </Button>
                   </div>
                 </CardContent>
@@ -1301,10 +1293,10 @@ This message was sent from the Teoflys Photography website contact form.
               <div className="flex items-center justify-between p-3 sm:p-4 lg:p-5 border-b border-gray-200 dark:border-gray-700">
                 <div className="flex-1 min-w-0">
                   <h3 className="text-lg sm:text-xl lg:text-xl font-bold text-gray-900 dark:text-white truncate">
-                    {selectedProject.title}
+                    {t(`portfolio.projects.${selectedProject.id}.title`)}
                   </h3>
                   <p className="text-xs sm:text-sm lg:text-sm text-gray-500 dark:text-gray-400 truncate">
-                    {selectedProject.client} • {selectedProject.date}
+                    {t(`portfolio.projects.${selectedProject.id}.client`)} • {t(`portfolio.projects.${selectedProject.id}.date`)}
                   </p>
                 </div>
                 <button
@@ -1378,10 +1370,10 @@ This message was sent from the Teoflys Photography website contact form.
                       {selectedProject.category}
                     </Badge>
                     <h4 className="font-bold text-base sm:text-lg text-gray-900 dark:text-white mb-2">
-                      Project Details
+                      {t('portfolio.projectDetails')}
                     </h4>
                     <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm leading-relaxed">
-                      {selectedProject.description}
+                      {t(`portfolio.projects.${selectedProject.id}.description`)}
                     </p>
                   </div>
 
@@ -1391,8 +1383,8 @@ This message was sent from the Teoflys Photography website contact form.
                         <Calendar className="w-3 h-3 sm:w-4 sm:h-4 text-blue-600 dark:text-blue-400" />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <p className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white">Date</p>
-                        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 truncate">{selectedProject.date}</p>
+                        <p className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white">{t('portfolio.date')}</p>
+                        <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 truncate">{t(`portfolio.projects.${selectedProject.id}.date`)}</p>
                       </div>
                     </div>
 
@@ -1401,7 +1393,7 @@ This message was sent from the Teoflys Photography website contact form.
                         <Camera className="w-3 h-3 sm:w-4 sm:h-4 text-green-600 dark:text-green-400" />
                       </div>
                       <div className="min-w-0 flex-1">
-                        <p className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white">Photos</p>
+                        <p className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white">{t('portfolio.photosCount')}</p>
                         <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400">{selectedProject.images.length} images</p>
                       </div>
                     </div>
@@ -1411,7 +1403,7 @@ This message was sent from the Teoflys Photography website contact form.
                         <span className="text-purple-600 dark:text-purple-400 text-xs sm:text-sm font-bold">C</span>
                       </div>
                       <div className="min-w-0 flex-1">
-                        <p className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white">Client</p>
+                        <p className="text-xs sm:text-sm font-medium text-gray-900 dark:text-white">{t('portfolio.client')}</p>
                         <p className="text-xs sm:text-sm text-gray-500 dark:text-gray-400 truncate">{selectedProject.client}</p>
                       </div>
                     </div>
@@ -1445,7 +1437,7 @@ This message was sent from the Teoflys Photography website contact form.
                       onClick={closeProjectDialog}
                       className="w-full bg-yellow-500 hover:bg-yellow-600 text-black font-semibold py-2.5 px-4 rounded-lg transition-all duration-300 text-sm sm:text-base"
                     >
-                      Close Gallery
+                      {t('portfolio.closeGallery')}
                     </Button>
                   </div>
                 </div>
@@ -1462,10 +1454,10 @@ This message was sent from the Teoflys Photography website contact form.
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 dark:text-white mb-4">
-              PHOTO GALLERY
+              {t('gallery.title')}
             </h2>
             <p className="text-gray-600 dark:text-gray-400 text-lg">
-              Explore our latest photography work and creative projects
+              {t('gallery.subtitle')}
             </p>
           </div>
 
@@ -1544,16 +1536,16 @@ This message was sent from the Teoflys Photography website contact form.
             <div className="text-center py-12">
               <div className="text-6xl mb-4">📸</div>
               <h3 className="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-2">
-                No Photos Available
+                {t('gallery.noPhotosAvailable')}
               </h3>
               <p className="text-gray-500 dark:text-gray-400 mb-4">
-                We couldn't load the gallery photos at the moment.
+                {t('gallery.noPhotosText')}
               </p>
               <button 
                 onClick={() => window.location.reload()} 
                 className="px-4 py-2 bg-yellow-500 hover:bg-yellow-600 text-black rounded-lg transition-colors"
               >
-                Try Again
+                {t('common.tryAgain')}
               </button>
             </div>
           )}
@@ -1571,7 +1563,7 @@ This message was sent from the Teoflys Photography website contact form.
                   onClick={() => setSelectedPhoto(null)}
                   className="absolute -top-10 right-0 text-white hover:text-gray-300"
                 >
-                  Close
+                  {t('common.close')}
                 </button>
                 <Image
                   src={selectedPhoto.imageUrl}
@@ -1599,10 +1591,10 @@ This message was sent from the Teoflys Photography website contact form.
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-8">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white mb-2">
-              FAQ
+              {t('faq.title')}
             </h2>
             <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300">
-              Common questions about our services
+              {t('faq.subtitle')}
             </p>
           </div>
 
@@ -1617,12 +1609,12 @@ This message was sent from the Teoflys Photography website contact form.
                     <div className="w-6 h-6 bg-blue-100 dark:bg-blue-900/30 rounded-full flex items-center justify-center">
                       <Camera className="w-3 h-3 text-blue-600 dark:text-blue-400" />
                     </div>
-                    <span>What photography services do you offer?</span>
+                    <span>{t('faq.questions.services.question')}</span>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-600 dark:text-gray-300 text-sm px-4 pb-4">
                   <div className="pl-8">
-                    Portrait, wedding, event, commercial, food, and landscape photography with professional equipment and editing.
+                    {t('faq.questions.services.answer')}
                   </div>
                 </AccordionContent>
               </AccordionItem>
@@ -1636,12 +1628,12 @@ This message was sent from the Teoflys Photography website contact form.
                     <div className="w-6 h-6 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center">
                       <Calendar className="w-3 h-3 text-green-600 dark:text-green-400" />
                     </div>
-                    <span>How do I book a session?</span>
+                    <span>{t('faq.questions.booking.question')}</span>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-600 dark:text-gray-300 text-sm px-4 pb-4">
                   <div className="pl-8">
-                    Contact us via phone, email, or contact form. We&apos;ll discuss your needs and provide a customized quote.
+                    {t('faq.questions.booking.answer')}
                   </div>
                 </AccordionContent>
               </AccordionItem>
@@ -1655,12 +1647,12 @@ This message was sent from the Teoflys Photography website contact form.
                     <div className="w-6 h-6 bg-purple-100 dark:bg-purple-900/30 rounded-full flex items-center justify-center">
                       <Settings className="w-3 h-3 text-purple-600 dark:text-purple-400" />
                     </div>
-                    <span>What&apos;s your photography process?</span>
+                    <span>{t('faq.questions.process.question')}</span>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-600 dark:text-gray-300 text-sm px-4 pb-4">
                   <div className="pl-8">
-                    Consultation, planning, photo session, editing, and delivery. We work closely with you throughout.
+                    {t('faq.questions.process.answer')}
                   </div>
                 </AccordionContent>
               </AccordionItem>
@@ -1674,12 +1666,12 @@ This message was sent from the Teoflys Photography website contact form.
                     <div className="w-6 h-6 bg-orange-100 dark:bg-orange-900/30 rounded-full flex items-center justify-center">
                       <Zap className="w-3 h-3 text-orange-600 dark:text-orange-400" />
                     </div>
-                    <span>What equipment do you use?</span>
+                    <span>{t('faq.questions.equipment.question')}</span>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-600 dark:text-gray-300 text-sm px-4 pb-4">
                   <div className="pl-8">
-                    Professional-grade cameras, lenses, and lighting equipment for highest quality results.
+                    {t('faq.questions.equipment.answer')}
                   </div>
                 </AccordionContent>
               </AccordionItem>
@@ -1693,12 +1685,12 @@ This message was sent from the Teoflys Photography website contact form.
                     <div className="w-6 h-6 bg-yellow-100 dark:bg-yellow-900/30 rounded-full flex items-center justify-center">
                       <MapPin className="w-3 h-3 text-yellow-600 dark:text-yellow-400" />
                     </div>
-                    <span>Can you shoot at specific locations?</span>
+                    <span>{t('faq.questions.locations.question')}</span>
                   </div>
                 </AccordionTrigger>
                 <AccordionContent className="text-gray-600 dark:text-gray-300 text-sm px-4 pb-4">
                   <div className="pl-8">
-                    Yes, we work at studios, outdoor settings, or your preferred venue with location scouting included.
+                    {t('faq.questions.locations.answer')}
                   </div>
                 </AccordionContent>
               </AccordionItem>
@@ -1708,21 +1700,21 @@ This message was sent from the Teoflys Photography website contact form.
           {/* Compact Contact CTA */}
           <div className="mt-6 text-center">
             <div className="bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg p-4 text-white">
-              <h3 className="text-lg font-bold mb-2">Need more info?</h3>
+              <h3 className="text-lg font-bold mb-2">{t('faq.needMoreInfo')}</h3>
               <div className="flex flex-col sm:flex-row items-center justify-center space-y-2 sm:space-y-0 sm:space-x-4">
                 <a 
                   href="#contact"
                   className="flex items-center space-x-2 bg-white text-yellow-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors"
                 >
                   <Phone className="w-3 h-3" />
-                  <span>Call</span>
+                  <span>{t('faq.call')}</span>
                 </a>
                 <a 
                   href="#contact"
                   className="flex items-center space-x-2 bg-white text-yellow-600 px-4 py-2 rounded-lg text-sm font-medium hover:bg-gray-100 transition-colors"
                 >
                   <Mail className="w-3 h-3" />
-                  <span>Email</span>
+                  <span>{t('faq.email')}</span>
                 </a>
               </div>
             </div>
@@ -1731,7 +1723,7 @@ This message was sent from the Teoflys Photography website contact form.
       </section>
 
       {/* Testimonials Preview Section */}
-      <section className="px-4 sm:px-6 py-12 rounded-t-full sm:py-16 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+      <section className="px-4 sm:px-6 py-12 rounded-t-full sm:py-16 bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-800 dark:to-gray-900">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-yellow-500/10 rounded-full mb-6">
@@ -1740,11 +1732,10 @@ This message was sent from the Teoflys Photography website contact form.
               </svg>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              What Our Clients Say
+              {t('testimonials.title')}
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto mb-8">
-              Real experiences from our valued clients across different photography services. 
-              Discover why they chose us and how we helped capture their special moments.
+              {t('testimonials.subtitle')}
             </p>
             
             {/* Call to Action */}
@@ -1754,7 +1745,7 @@ This message was sent from the Teoflys Photography website contact form.
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clipRule="evenodd" />
                   </svg>
-                  Share Your Experience
+                  {t('testimonials.shareExperience')}
                 </Button>
               </Link>
               <Link href="/testimonials">
@@ -1765,7 +1756,7 @@ This message was sent from the Teoflys Photography website contact form.
                   <svg className="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
                     <path fillRule="evenodd" d="M15.707 15.707a1 1 0 01-1.414 0l-5-5a1 1 0 010-1.414l5-5a1 1 0 111.414 1.414L11.414 9H17a1 1 0 110 2h-5.586l4.293 4.293a1 1 0 010 1.414z" clipRule="evenodd" />
                   </svg>
-                  View All Testimonials
+                  {t('testimonials.viewAllTestimonials')}
                 </Button>
               </Link>
             </div>
@@ -1782,7 +1773,7 @@ This message was sent from the Teoflys Photography website contact form.
                 variant="outline"
                 className="border-2 border-yellow-500 text-yellow-500 hover:bg-yellow-500 hover:text-black font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105"
               >
-                View All Testimonials & Submit Your Own
+                {t('testimonials.viewAllAndSubmit')}
               </Button>
             </Link>
           </div>
@@ -1797,10 +1788,10 @@ This message was sent from the Teoflys Photography website contact form.
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Let's Work Together
+              {t('contact.title')}
             </h2>
             <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              Ready to capture your special moments? Send us a message or contact us directly via WhatsApp
+              {t('contact.subtitle')}
             </p>
           </div>
 
@@ -1808,13 +1799,13 @@ This message was sent from the Teoflys Photography website contact form.
             {/* Contact Form */}
             <div className="bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 rounded-xl p-6 sm:p-8">
               <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-6">
-                Send a Message
+                {t('contact.sendMessage')}
               </h3>
               <form onSubmit={handleFormSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      First Name *
+                      {t('contact.firstName')} *
                     </label>
                     <input
                       type="text"
@@ -1828,7 +1819,7 @@ This message was sent from the Teoflys Photography website contact form.
                   </div>
                   <div>
                     <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                      Last Name *
+                      {t('contact.lastName')} *
                     </label>
                     <input
                       type="text"
@@ -1844,7 +1835,7 @@ This message was sent from the Teoflys Photography website contact form.
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Email Address *
+                    {t('contact.emailAddress')} *
                   </label>
                   <input
                     type="email"
@@ -1858,8 +1849,8 @@ This message was sent from the Teoflys Photography website contact form.
                 </div>
 
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Phone Number
+                  <label className="block text-text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                    {t('contact.phoneNumber')}
                   </label>
                   <input
                     type="tel"
@@ -1873,7 +1864,7 @@ This message was sent from the Teoflys Photography website contact form.
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Service Type *
+                    {t('contact.serviceType')} *
                   </label>
                   <select
                     name="serviceType"
@@ -1882,20 +1873,20 @@ This message was sent from the Teoflys Photography website contact form.
                     required
                     className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300"
                   >
-                    <option value="">Select a service</option>
-                    <option value="Wedding Photography">Wedding Photography</option>
-                    <option value="Portrait Photography">Portrait Photography</option>
-                    <option value="Event Photography">Event Photography</option>
-                    <option value="Commercial Photography">Commercial Photography</option>
-                    <option value="Food Photography">Food Photography</option>
-                    <option value="Landscape Photography">Landscape Photography</option>
-                    <option value="Other">Other</option>
+                    <option value="">{t('contact.selectService')}</option>
+                    <option value="Wedding Photography">{t('contact.weddingPhotography')}</option>
+                    <option value="Portrait Photography">{t('contact.portraitPhotography')}</option>
+                    <option value="Event Photography">{t('contact.eventPhotography')}</option>
+                    <option value="Commercial Photography">{t('contact.commercialPhotography')}</option>
+                    <option value="Food Photography">{t('contact.foodPhotography')}</option>
+                    <option value="Landscape Photography">{t('contact.landscapePhotography')}</option>
+                    <option value="Other">{t('contact.other')}</option>
                   </select>
                 </div>
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Event Date
+                    {t('contact.eventDate')}
                   </label>
                   <input
                     type="date"
@@ -1908,7 +1899,7 @@ This message was sent from the Teoflys Photography website contact form.
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
-                    Message *
+                    {t('contact.message')} *
                   </label>
                   <textarea
                     name="message"
@@ -1917,7 +1908,7 @@ This message was sent from the Teoflys Photography website contact form.
                     required
                     rows={5}
                     className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 text-gray-900 dark:text-white focus:ring-2 focus:ring-yellow-500 focus:border-transparent transition-all duration-300 resize-none"
-                    placeholder="Tell us about your project, event details, preferred style, budget, and any special requirements..."
+                    placeholder={t('contact.tellUsAbout')}
                   ></textarea>
                 </div>
 
@@ -1926,7 +1917,7 @@ This message was sent from the Teoflys Photography website contact form.
                   disabled={isSubmitting}
                   className="w-full bg-gradient-to-r from-yellow-500 to-orange-500 text-white font-semibold py-3 px-6 rounded-lg hover:from-yellow-600 hover:to-orange-600 transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                  {isSubmitting ? t('contact.sending') : t('contact.sendMessageButton')}
                 </button>
               </form>
             </div>
@@ -1941,15 +1932,15 @@ This message was sent from the Teoflys Photography website contact form.
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                      WhatsApp Booking
+                      {t('contact.whatsappBooking')}
                     </h3>
                     <p className="text-green-600 dark:text-green-400 text-sm">
-                      Instant response guaranteed
+                      {t('contact.instantResponse')}
                     </p>
                   </div>
                 </div>
                 <p className="text-gray-600 dark:text-gray-300 mb-6">
-                  Get instant quotes and quick responses. Perfect for urgent bookings or quick questions.
+                  {t('contact.whatsappText')}
                 </p>
                 <a
                   href="https://wa.me/+250786885185?text=Hi%20Teoflys!%20I'm%20interested%20in%20booking%20a%20photography%20session.%20Could%20you%20please%20share%20more%20details%20about%20your%20services%20and%20availability?"
@@ -1958,7 +1949,7 @@ This message was sent from the Teoflys Photography website contact form.
                   className="inline-flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 >
                   <span className="text-lg">💬</span>
-                  Chat on WhatsApp
+                  {t('contact.chatOnWhatsapp')}
                 </a>
               </div>
 
@@ -1970,22 +1961,22 @@ This message was sent from the Teoflys Photography website contact form.
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                      Email Booking
+                      {t('contact.emailBooking')}
                     </h3>
                     <p className="text-blue-600 dark:text-blue-400 text-sm">
-                      Detailed proposals
+                      {t('contact.detailedProposals')}
                     </p>
                   </div>
                 </div>
                 <p className="text-gray-600 dark:text-gray-300 mb-6">
-                  Send detailed project requirements and get comprehensive proposals with pricing and packages.
+                  {t('contact.emailText')}
                 </p>
                 <a
                   href="mailto:helloteofly@gmail.com?subject=Photography Booking Inquiry&body=Hi Teoflys,%0D%0A%0D%0AI'm interested in booking a photography session. Here are my details:%0D%0A%0D%0AEvent Type: %0D%0ADate: %0D%0ALocation: %0D%0ABudget: %0D%0ASpecial Requirements: %0D%0A%0D%0APlease let me know your availability and pricing.%0D%0A%0D%0AThank you!"
                   className="inline-flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 >
                   <Mail className="w-5 h-5" />
-                  Send Email
+                  {t('contact.sendEmail')}
                 </a>
               </div>
 
@@ -1997,15 +1988,15 @@ This message was sent from the Teoflys Photography website contact form.
                   </div>
                   <div>
                     <h3 className="text-xl font-bold text-gray-900 dark:text-white">
-                      Call Directly
+                      {t('contact.callDirectly')}
                     </h3>
                     <p className="text-purple-600 dark:text-purple-400 text-sm">
-                      Personal consultation
+                      {t('contact.personalConsultation')}
                     </p>
                   </div>
                 </div>
                 <p className="text-gray-600 dark:text-gray-300 mb-4">
-                  Speak directly with Teoflys to discuss your vision and requirements.
+                  {t('contact.callText')}
                 </p>
                 <div className="space-y-3">
                   <a
@@ -2016,7 +2007,7 @@ This message was sent from the Teoflys Photography website contact form.
                     +1 (234) 567-890
                   </a>
                   <p className="text-sm text-gray-500 dark:text-gray-400">
-                    Available: Mon-Fri 9AM-6PM EST
+                    {t('business.available')}: Mon-Fri 9AM-6PM EST
                   </p>
                 </div>
               </div>
@@ -2025,25 +2016,25 @@ This message was sent from the Teoflys Photography website contact form.
               <div className="bg-gradient-to-br from-yellow-50 to-amber-100 dark:from-yellow-900/20 dark:to-amber-800/20 rounded-xl p-6 border border-yellow-200 dark:border-yellow-800">
                 <h4 className="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
                   <Clock className="w-5 h-5 text-yellow-500" />
-                  Business Hours
+                  {t('business.hours')}
                 </h4>
                 <div className="space-y-2 text-sm">
                   <div className="flex justify-between">
-                    <span className="text-gray-600 dark:text-gray-400">Monday - Friday</span>
+                    <span className="text-gray-600 dark:text-gray-400">{t('business.mondayFriday')}</span>
                     <span className="text-gray-900 dark:text-white font-medium">9:00 AM - 6:00 PM</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600 dark:text-gray-400">Saturday</span>
+                    <span className="text-gray-600 dark:text-gray-400">{t('business.saturday')}</span>
                     <span className="text-gray-900 dark:text-white font-medium">10:00 AM - 4:00 PM</span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600 dark:text-gray-400">Sunday</span>
-                    <span className="text-gray-900 dark:text-white font-medium">By Appointment</span>
+                    <span className="text-gray-600 dark:text-gray-400">{t('business.sunday')}</span>
+                    <span className="text-gray-900 dark:text-white font-medium">{t('business.byAppointment')}</span>
                   </div>
                 </div>
                 <div className="mt-4 p-3 bg-yellow-100 dark:bg-yellow-900/30 rounded-lg">
                   <p className="text-xs text-yellow-800 dark:text-yellow-200">
-                    💡 <strong>Tip:</strong> For fastest response, use WhatsApp during business hours or email for detailed inquiries.
+                    {t('business.tip')}
                   </p>
                 </div>
               </div>
@@ -2075,23 +2066,22 @@ This message was sent from the Teoflys Photography website contact form.
                 <div className="flex items-center gap-2">
                   <div className="w-2 h-2 bg-yellow-500 rounded-full animate-ping"></div>
                   <span className="text-sm sm:text-base font-medium text-gray-600 dark:text-gray-400">
-                    Photography Studio
+                    {t('footer.photographyStudio')}
                   </span>
                 </div>
               </div>
               <p className="text-gray-600 dark:text-gray-400 text-sm sm:text-base mb-6 max-w-md leading-relaxed">
-                Capturing life's most precious moments with creativity, passion, and professional excellence. 
-                Let's create timeless memories together.
+                {t('footer.description')}
               </p>
               <div className="flex items-center gap-4">
                 <a href="#contact">
                 <button className="group relative px-6 py-3 bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-full font-medium text-sm sm:text-base overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-lg">
-                  <span className="relative z-10">WORK TOGETHER</span>
+                  <span className="relative z-10">{t('footer.workTogether')}</span>
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-600 to-blue-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 </button></a>
                 <div className="flex items-center gap-2 text-gray-500 dark:text-gray-400">
                   <div className="w-1 h-1 bg-yellow-500 rounded-full animate-pulse"></div>
-                  <span className="text-xs sm:text-sm">Available for bookings</span>
+                  <span className="text-xs sm:text-sm">{t('footer.availableForBookings')}</span>
                 </div>
               </div>
             </div>
@@ -2099,7 +2089,7 @@ This message was sent from the Teoflys Photography website contact form.
             {/* Services Section */}
             <div className="group">
               <h4 className="font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 text-lg sm:text-xl relative">
-                SERVICES
+                {t('footer.services')}
                 <div className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-yellow-500 to-orange-500 group-hover:w-full transition-all duration-300"></div>
               </h4>
               <ul className="space-y-3">
@@ -2286,10 +2276,10 @@ This message was sent from the Teoflys Photography website contact form.
               <p className="text-gray-500 dark:text-gray-400 text-xs sm:text-sm text-center sm:text-left">
                 © 2025 Teos.visual Photography. All rights reserved.
               </p>
-              <div className="flex items-center gap-2">
+              {/* <div className="flex items-center gap-2">
                 <div className="w-1 h-1 bg-yellow-500 rounded-full animate-pulse"></div>
                 <span className="text-xs text-gray-400">Made by dux.io</span>
-              </div>
+              </div> */}
             </div>
             <div className="flex items-center gap-2">
               <span className="text-xs text-gray-400">Powered by</span>
@@ -2306,7 +2296,7 @@ This message was sent from the Teoflys Photography website contact form.
       {/* Scroll to Top Button */}
       <button
         onClick={scrollToTop}
-        className={`fixed bottom-44 right-4 z-50 w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 ${
+        className={`fixed bottom-50 right-4 z-50 w-12 h-12 bg-gradient-to-r from-yellow-500 to-orange-500 text-white rounded-full shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 ${
           showScrollToTop ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'
         }`}
         aria-label="Scroll to top"

@@ -1,0 +1,472 @@
+{
+  "common": {
+    "home": "STARTSEITE",
+    "aboutUs": "ÜBER UNS",
+    "portfolio": "PORTFOLIO",
+    "gallery": "GALERIE",
+    "services": "DIENSTLEISTUNGEN",
+    "testimonials": "BEWERTUNGEN",
+    "contact": "KONTAKT",
+    "connectWithUs": "KONTAKTIEREN SIE UNS",
+    "bookNow": "JETZT BUCHEN",
+    "viewPortfolio": "Portfolio anzeigen",
+    "moreDetails": "Weitere Details",
+    "close": "Schließen",
+    "next": "Weiter",
+    "previous": "Zurück",
+    "loading": "Lädt...",
+    "tryAgain": "Erneut versuchen",
+    "viewAll": "Alle anzeigen",
+    "submit": "Absenden",
+    "send": "Senden",
+    "cancel": "Abbrechen",
+    "save": "Speichern",
+    "edit": "Bearbeiten",
+    "delete": "Löschen",
+    "search": "Suchen",
+    "filter": "Filtern",
+    "sort": "Sortieren",
+    "language": "Sprache",
+    "theme": "Thema",
+    "dark": "Dunkel",
+    "light": "Hell"
+  },
+  "hero": {
+    "premiumPhotography": "PREMIUM-FOTOGRAFIE VON",
+    "teosVisual": "TEOS.VISUAL",
+    "lets": "LASSEN SIE UNS",
+    "professionalPhotography": "Professionelle Fotografie",
+    "architecturalPhotography": "Architekturfotografie",
+    "natureCoverage": "Natur-Abdeckung",
+    "landscapePhotography": "Landschaftsfotografie",
+    "creativeFoodArt": "Kreative Food-Kunst",
+    "captureSpecialMoments": "Fangen Sie Ihre besonderen Momente mit Stil ein",
+    "professionalArchitectural": "Professionelle Architekturfotografie",
+    "completeNature": "Vollständige Naturfotografie-Services",
+    "beautifulLandscapes": "Wunderschöne Landschaften und Naturfotos",
+    "uniqueFoodPerspectives": "Einzigartige kulinarische Kunstperspektiven"
+  },
+  "categories": {
+    "food": "ESSEN",
+    "commercial": "KOMMERZIELL",
+    "product": "PRODUKT",
+    "wedding": "HOCHZEIT",
+    "landscape": "LANDSCHAFT",
+    "architectural": "ARCHITEKTUR",
+    "portrait": "PORTRAIT",
+    "event": "VERANSTALTUNG"
+  },
+  "about": {
+    "introduction": "Einführung",
+    "introductionText": "wir sind professionelle Fotografen mit über 3 Jahren Erfahrung im Einfangen der kostbarsten Momente des Lebens. Meine Leidenschaft liegt in der Schaffung zeitloser Bilder, die fesselnde Geschichten erzählen. Ob Hochzeit, Firmenveranstaltung oder persönliche Porträtsitzung - ich bringe Kreativität, technische Expertise und ein geschultes Auge für Details in jedes Projekt ein.",
+    "contactInformation": "Kontaktinformationen",
+    "email": "E-Mail",
+    "phone": "Telefon",
+    "address": "Adresse",
+    "moroccoRabat": "Marokko, Rabat",
+    "followUs": "Folgen Sie uns auf",
+    "facebook": "Facebook",
+    "tiktok": "TikTok",
+    "linkedin": "LinkedIn",
+    "instagram": "Instagram",
+    "snapchat": "Snapchat",
+    "youtube": "YouTube",
+    "ourGallery": "Unsere Galerie",
+    "downloadCV": "Lebenslauf herunterladen"
+  },
+  "services": {
+    "title": "MEINE FOTOGRAFIE-DIENSTLEISTUNGEN",
+    "subtitle": "Professionelle Fotografie-Services, die darauf ausgerichtet sind, Ihre besonderen Momente mit Kreativität und Exzellenz einzufangen",
+    "wedding": {
+      "title": "Hochzeitsfotografie",
+      "description": "Fangen Sie Ihren besonderen Tag mit zeitloser Eleganz ein. Von Verlobungsfotoshootings bis zum großen Tag dokumentiere ich jeden kostbaren Moment.",
+      "features": [
+        "Verlobungsfotoshootings",
+        "Hochzeitstag-Abdeckung",
+        "Brautporträts",
+        "Empfangsfotografie"
+      ]
+    },
+    "portrait": {
+      "title": "Porträtfotografie",
+      "description": "Professionelle Porträts, die Persönlichkeit und Emotion einfangen. Perfekt für persönliches Branding und Familienerinnerungen.",
+      "features": [
+        "Professionelle Bewerbungsfotos",
+        "Familienporträts",
+        "Abschlussfotos",
+        "Persönliches Branding"
+      ]
+    },
+    "event": {
+      "title": "Veranstaltungsfotografie",
+      "description": "Dynamische Veranstaltungsabdeckung für Firmenveranstaltungen, Partys und besondere Anlässe. Professionelle Beleuchtung und Ausrüstung.",
+      "features": [
+        "Firmenveranstaltungen",
+        "Geburtstagsfeiern",
+        "Hochzeitstage",
+        "Besondere Anlässe"
+      ]
+    },
+    "commercial": {
+      "title": "Kommerzielle Fotografie",
+      "description": "Hochwertige Produkt- und Geschäftsfotografie für Marketing, Werbung und Markenentwicklung.",
+      "features": [
+        "Produktfotografie",
+        "Immobilien",
+        "Restaurant & Essen",
+        "Geschäftsbranding"
+      ]
+    },
+    "landscape": {
+      "title": "Landschaftsfotografie",
+      "description": "Atemberaubende Landschafts- und Naturfotografie. Von urbanen Stadtansichten bis zu friedlichen Naturumgebungen.",
+      "features": [
+        "Naturlandschaften",
+        "Urbane Fotografie",
+        "Reisefotografie",
+        "Luftaufnahmen"
+      ]
+    },
+    "food": {
+      "title": "Food-Fotografie",
+      "description": "Appetitanregende Food-Fotografie für Restaurants, Köche und kulinarische Unternehmen. Professionelles Styling und Beleuchtung.",
+      "features": [
+        "Restaurant-Menüs",
+        "Kochporträts",
+        "Food-Styling",
+        "Kulinarische Veranstaltungen"
+      ]
+    },
+    "cta": {
+      "readyToCapture": "Bereit, Ihre besonderen Momente einzufangen?",
+      "bookSession": "Sitzung buchen"
+    }
+  },
+  "portfolio": {
+    "title": "ENTDECKEN SIE MEINE FOTOGRAFIE-ARBEITEN",
+    "subtitle": "Entdecken Sie meine neuesten Projekte und kreativen Arbeiten in verschiedenen Fotografie-Stilen",
+    "viewGallery": "Galerie anzeigen",
+    "photos": "Fotos",
+    "completed": "ABGESCHLOSSEN",
+    "projectDetails": "Projektdetails",
+    "date": "Datum",
+    "photosCount": "Fotos",
+    "client": "Kunde",
+    "closeGallery": "Galerie schließen",
+    "projects": {
+      "wedding-sarah-john": {
+        "title": "Hochzeit von Sarah & John",
+        "category": "Hochzeitsfotografie",
+        "description": "Eine wunderschöne Hochzeit im Freien voller Liebe, Lachen und unvergesslicher Momente. Jeder Moment wurde festgehalten – von der intimen Zeremonie bis zur lebhaften Feier.",
+        "stats": "HOCHZEIT • 8 FOTOS • ABGESCHLOSSEN",
+        "client": "Sarah & John",
+        "date": "Juni 2024"
+      },
+      "portrait-emma": {
+        "title": "Emmas professionelle Porträts",
+        "category": "Porträtfotografie",
+        "description": "Professionelle Headshots und Personal-Branding-Fotos für eine erfolgreiche Unternehmerin. Moderner, klarer Stil, der Persönlichkeit und Professionalität einfängt.",
+        "stats": "PORTRÄT • 8 FOTOS • ABGESCHLOSSEN",
+        "client": "Emma Rodriguez",
+        "date": "Mai 2024"
+      },
+      "commercial-restaurant": {
+        "title": "Nyandungu Restaurant",
+        "category": "Kommerzielle Fotografie",
+        "description": "Umfassende Restaurantfotografie inklusive Innenaufnahmen, Food-Styling und Team-Porträts. Umfassendes visuelles Markenpaket für Marketingmaterialien.",
+        "stats": "KOMMERZIELL • 9 FOTOS • ABGESCHLOSSEN",
+        "client": "Bella Vista Restaurant",
+        "date": "April 2024"
+      },
+      "event-tech-conference": {
+        "title": "Tech Innovation Summit 2024",
+        "category": "Veranstaltungsfotografie",
+        "description": "Berichterstattung über eine Firmenveranstaltung, einschließlich Hauptrednern, Networking-Sessions und Produktdemonstrationen. Professionelle Dokumentation einer großen Konferenz.",
+        "stats": "EVENT • 11 FOTOS • ABGESCHLOSSEN",
+        "client": "Tech Innovations Inc.",
+        "date": "März 2024"
+      },
+      "landscape-mountains": {
+        "title": "Berglandschaften Ruandas",
+        "category": "Landschaftsfotografie",
+        "description": "Atemberaubende Landschaftsfotografie, die die natürliche Schönheit Ruandas zeigt. Aufgenommen während der Goldenen und Blauen Stunde für optimale Lichtverhältnisse.",
+        "stats": "LANDSCHAFT • 10 FOTOS • ABGESCHLOSSEN",
+        "client": "Persönliches Projekt",
+        "date": "Februar 2024"
+      },
+      "food-artisan-cafe": {
+        "title": "Artisan Café Menüfotografie",
+        "category": "Food-Fotografie",
+        "description": "Gestylte Food-Fotografie für das neue Menü eines lokalen Cafés. Jedes Gericht sorgfältig arrangiert und ausgeleuchtet, um Textur und Farbe zur Geltung zu bringen.",
+        "stats": "FOOD • 12 FOTOS • ABGESCHLOSSEN",
+        "client": "Artisan Café",
+        "date": "Januar 2024"
+      }
+    }
+  },
+  "gallery": {
+    "title": "FOTOGALERIE",
+    "subtitle": "Entdecken Sie unsere neuesten Fotografie-Arbeiten und kreativen Projekte",
+    "noPhotosAvailable": "Keine Fotos verfügbar",
+    "noPhotosText": "Wir konnten die Galerie-Fotos im Moment nicht laden.",
+    "imageUnavailable": "Bild nicht verfügbar"
+  },
+  "faq": {
+    "title": "HÄUFIG GESTELLTE FRAGEN",
+    "subtitle": "Häufige Fragen zu unseren Dienstleistungen",
+    "questions": {
+      "services": {
+        "question": "Welche Fotografie-Dienstleistungen bieten Sie an?",
+        "answer": "Porträt-, Hochzeits-, Veranstaltungs-, kommerzielle, Food- und Landschaftsfotografie mit professioneller Ausrüstung und Bearbeitung."
+      },
+      "booking": {
+        "question": "Wie buche ich eine Sitzung?",
+        "answer": "Kontaktieren Sie uns per Telefon, E-Mail oder Kontaktformular. Wir besprechen Ihre Bedürfnisse und erstellen ein maßgeschneidertes Angebot."
+      },
+      "process": {
+        "question": "Wie läuft Ihr Fotografie-Prozess ab?",
+        "answer": "Beratung, Planung, Fotoshooting, Bearbeitung und Lieferung. Wir arbeiten eng mit Ihnen zusammen."
+      },
+      "equipment": {
+        "question": "Welche Ausrüstung verwenden Sie?",
+        "answer": "Professionelle Kameras, Objektive und Beleuchtungsausrüstung für Ergebnisse von höchster Qualität."
+      },
+      "locations": {
+        "question": "Können Sie an bestimmten Orten fotografieren?",
+        "answer": "Ja, wir arbeiten in Studios, Außenumgebungen oder Ihrem bevorzugten Veranstaltungsort mit inbegriffener Ortserkundung."
+      }
+    },
+    "needMoreInfo": "Benötigen Sie weitere Informationen?",
+    "call": "Anrufen",
+    "email": "E-Mail"
+  },
+  "testimonials": {
+    "title": "Was Unsere Kunden Sagen",
+    "subtitle": "Echte Erfahrungen unserer geschätzten Kunden in verschiedenen Fotografie-Dienstleistungen. Entdecken Sie, warum sie uns gewählt haben und wie wir ihnen geholfen haben, ihre besonderen Momente einzufangen.",
+    "shareExperience": "Teilen Sie Ihre Erfahrung",
+    "viewAllTestimonials": "Alle Bewertungen anzeigen",
+    "viewAllAndSubmit": "Alle Bewertungen anzeigen und Ihre eigene einreichen"
+  },
+  "contact": {
+    "title": "Lassen Sie uns zusammenarbeiten",
+    "subtitle": "Bereit, Ihre besonderen Momente einzufangen? Senden Sie uns eine Nachricht oder kontaktieren Sie uns direkt über WhatsApp",
+    "sendMessage": "Nachricht senden",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "emailAddress": "E-Mail-Adresse",
+    "phoneNumber": "Telefonnummer",
+    "serviceType": "Dienstleistungsart",
+    "eventDate": "Veranstaltungsdatum",
+    "message": "Nachricht",
+    "selectService": "Dienstleistung auswählen",
+    "weddingPhotography": "Hochzeitsfotografie",
+    "portraitPhotography": "Porträtfotografie",
+    "eventPhotography": "Veranstaltungsfotografie",
+    "commercialPhotography": "Kommerzielle Fotografie",
+    "foodPhotography": "Food-Fotografie",
+    "landscapePhotography": "Landschaftsfotografie",
+    "other": "Andere",
+    "tellUsAbout": "Erzählen Sie uns von Ihrem Projekt, Veranstaltungsdetails, bevorzugtem Stil, Budget und besonderen Anforderungen...",
+    "sending": "Wird gesendet...",
+    "sendMessageButton": "Nachricht senden",
+    "whatsappBooking": "WhatsApp-Buchung",
+    "instantResponse": "Sofortige Antwort garantiert",
+    "whatsappText": "Erhalten Sie sofortige Angebote und schnelle Antworten. Perfekt für dringende Buchungen oder schnelle Fragen.",
+    "chatOnWhatsapp": "Auf WhatsApp chatten",
+    "emailBooking": "E-Mail-Buchung",
+    "detailedProposals": "Detaillierte Vorschläge",
+    "emailText": "Senden Sie detaillierte Projektanforderungen und erhalten Sie umfassende Vorschläge mit Preisen und Paketen.",
+    "sendEmail": "E-Mail senden",
+    "callDirectly": "Direkt anrufen",
+    "personalConsultation": "Persönliche Beratung",
+    "callText": "Sprechen Sie direkt mit unserem Team für eine persönliche Beratung und sofortige Antworten auf Ihre Fragen."
+  },
+  "languages": {
+    "en": "English",
+    "fr": "Français",
+    "es": "Español",
+    "de": "Deutsch"
+  },
+  "business": {
+    "hours": "Geschäftszeiten",
+    "mondayFriday": "Montag - Freitag",
+    "saturday": "Samstag",
+    "sunday": "Sonntag",
+    "byAppointment": "Nach Vereinbarung",
+    "available": "Verfügbar",
+    "tip": "💡 Tipp: Für schnellste Antwort nutzen Sie WhatsApp während der Geschäftszeiten oder E-Mail für detaillierte Anfragen."
+  },
+  "footer": {
+    "photographyStudio": "Fotostudio",
+    "description": "Wir fangen die kostbarsten Momente des Lebens mit Kreativität, Leidenschaft und professioneller Exzellenz ein. Lassen Sie uns zusammen zeitlose Erinnerungen schaffen.",
+    "workTogether": "ZUSAMMENARBEITEN",
+    "availableForBookings": "Verfügbar für Buchungen",
+    "services": "DIENSTLEISTUNGEN"
+  },
+  "chat": {
+    "title": "Teos KI-Assistent",
+    "online": "Online",
+    "helperCardTitle": "Brauchen Sie Hilfe? Jetzt chatten! 💬",
+    "openButtonAria": "KI-Chat-Assistent öffnen",
+    "placeholder": "Fragen Sie nach Fotografie-Services...",
+    "callUs": "Anrufen",
+    "email": "E-Mail",
+    "welcome": "Hallo! Ich bin Ihr KI-Fotografieassistent. Ich helfe bei:\n\n📸 Services & Preise\n🎯 Portfolio & Stilfragen\n📅 Buchung & Verfügbarkeit\n💡 Fototipps\n\nWobei kann ich heute helfen?",
+    "genericErrorShort": "Entschuldigung, Ihre Anfrage konnte nicht verarbeitet werden. Bitte erneut versuchen.",
+    "genericErrorLong": "Entschuldigung, es gibt technische Probleme. Bitte später erneut versuchen oder uns direkt unter helloteofly@gmail.com kontaktieren."
+  }
+  ,
+  "servicesPages": {
+    "common": {
+      "back": "Zur Startseite",
+      "callNow": "Jetzt anrufen",
+      "emailUs": "E-Mail senden",
+      "viewDetails": "Details ansehen"
+    },
+    "wedding": {
+      "title": "Hochzeitsfotografie",
+      "heroSubtitle": "Zeitlose Hochzeitsfotografie – wir halten Liebe, Freude und jeden Moment fest.",
+      "servicesHeading": "Unsere Hochzeitsfotografie-Services",
+      "servicesSubheading": "Von Verlobung bis Hochzeitstag – wir begleiten eure Geschichte",
+      "cards": {
+        "ceremony": { "title": "Zeremonie", "description": "Stilvolle Dokumentation der Trauung", "features": ["Gelübde & Ringe", "Familienmomente", "Echte Emotionen", "Professionelles Licht"] },
+        "engagement": { "title": "Verlobungsshooting", "description": "Romantisches Shooting vor der Hochzeit", "features": ["Location-Scouting", "Styling-Tipps", "Goldene Stunde", "High-Res Bearbeitung"] },
+        "packages": { "title": "Hochzeitspakete", "description": "Flexible Pakete für euren Tag", "features": ["Halb-/Ganztag", "Zweitfotograf", "Online-Galerie", "Album-Design"] }
+      },
+      "whyHeading": "Warum Unsere Hochzeitsfotografie?",
+      "why": { "items": [
+        { "title": "Künstlerisches Storytelling", "desc": "Elegante, emotionale und zeitlose Bilder." },
+        { "title": "Profi-Ausrüstung", "desc": "Top-Kameras, Objektive und Beleuchtung." },
+        { "title": "Zuverlässige Lieferung", "desc": "Pünktlicher Turnaround und kuratierte Auswahl." }
+      ]},
+      "ctaHeading": "Bereit für eure Liebesgeschichte?",
+      "ctaSubheading": "Lasst uns Erinnerungen schaffen, die ewig bleiben"
+    },
+    "events": {
+      "title": "Veranstaltungsfotografie",
+      "heroSubtitle": "Professionelle Eventfotografie für Firmen, Partys und besondere Anlässe. Wir halten jeden Moment stilvoll fest.",
+      "servicesHeading": "Unsere Eventfotografie-Services",
+      "servicesSubheading": "Umfassende Abdeckung – auf Ihren Anlass zugeschnitten",
+      "cards": {
+        "corporate": { "title": "Firmenevents", "description": "Professionelle Abdeckung von Business-Events", "features": ["Keynotes & Panels", "Networking-Momente", "Brand-Aktivierungen", "Profi-Lieferung"] },
+        "parties": { "title": "Partys & Feiern", "description": "Geburtstage und besondere Feiern", "features": ["Candids & Gruppen", "Deko & Details", "Tanzflächen-Energie", "Schnelle Abgabe"] },
+        "special": { "title": "Besondere Anlässe", "description": "Jubiläen und Meilensteine", "features": ["Zeremonie-Momente", "Familienporträts", "Location-Highlights", "Kuratiertes Album"] }
+      },
+      "ctaHeading": "Eventfotografie buchen",
+      "ctaSubheading": "Lassen Sie uns Ihre besonderen Momente professionell festhalten",
+      "portfolioHeading": "Eventfotografie-Portfolio",
+      "portfolioSubheading": "Highlights aus unseren jüngsten Reportagen",
+      "whyHeading": "Warum Unsere Eventfotografie?",
+      "why": { "items": [
+        { "title": "Erfahrene Abdeckung", "desc": "Bewährte Arbeit bei Konferenzen, Galas und privaten Events." },
+        { "title": "Diskret & Effizient", "desc": "Wir sind unauffällig und dennoch vollständig und pünktlich." },
+        { "title": "Konstante Qualität", "desc": "Saubere Bearbeitung und termingerechte Lieferung." }
+      ] }
+    },
+    "architectural": {
+      "title": "Architekturfotografie",
+      "heroSubtitle": "Professionelle Innen- und Außenaufnahmen, die Design, Material und Licht zeigen.",
+      "servicesHeading": "Unsere Architekturfotografie-Services",
+      "servicesSubheading": "Präzise Bilder für Architekten, Designer, Immobilien und Marken",
+      "cards": {
+        "exterior": { "title": "Außenarchitektur", "description": "Fassaden, Materialität und Umfeld im idealen Licht", "features": ["Goldene/Blaue Stunde", "Perspektivkontrolle", "Detailstudien", "Wetterplanung"] },
+        "interior": { "title": "Innenräume", "description": "Natürliches Licht, Materialität und Raumstory", "features": ["Staging-Hinweise", "Farbgenauigkeit", "Klaren Linien", "HDR-Bracketing"] },
+        "realEstate": { "title": "Immobilien", "description": "Marktreife Bilder für Exposés und Broschüren", "features": ["Raumübersichten", "Ausstattungs-Highlights", "Außenkontext", "Schnelle Lieferung"] }
+      },
+      "portfolioHeading": "Architektur-Portfolio",
+      "portfolioSubheading": "Kuratiertes Werk zu Innen und Außen",
+      "whyHeading": "Warum Unsere Architekturfotografie?",
+      "why": { "items": [
+        { "title": "Gestaltungssinn", "desc": "Proportion, Materialität und Funktion respektiert." },
+        { "title": "Technische Präzision", "desc": "Kontrollierte Perspektive und farbverwalteter Workflow." },
+        { "title": "Professionelle Lieferung", "desc": "Konsistente Dateien für Web, Druck und Presse." }
+      ] },
+      "ctaHeading": "Bereit, Ihr Projekt zu zeigen?",
+      "ctaSubheading": "Wir schaffen Bilder, die Ihr Werk aufwerten"
+    },
+    "portrait": {
+      "title": "Porträtfotografie",
+      "heroSubtitle": "Professionelle Porträts mit Stil und Authentizität.",
+      "servicesHeading": "Unsere Porträt-Services",
+      "servicesSubheading": "Studio, Outdoor und kreativ für Personen und Teams",
+      "cards": {
+        "studio": { "title": "Studio-Porträts", "description": "Kontrolliertes Licht für zeitlose Looks", "features": ["Mehrere Setups", "Profi-Licht", "Hintergründe", "Angeleitete Posen"] },
+        "outdoor": { "title": "Outdoor-Porträts", "description": "Porträts mit natürlichem Licht on Location", "features": ["Goldene Stunde", "Location-Scouting", "Umfeldkontext", "Spontane Momente"] },
+        "creative": { "title": "Kreative Porträts", "description": "Stilisierte Konzepte und Editorial-Looks", "features": ["Konzeptplanung", "Requisiten & Styling", "Farbfilter", "Dramatisches Licht"] }
+      },
+      "portfolioHeading": "Porträt-Portfolio",
+      "portfolioSubheading": "Aktuelle Studio- und On-Location-Sessions",
+      "whyHeading": "Warum Unsere Porträtfotografie?",
+      "why": { "items": [
+        { "title": "Angenehme Anleitung", "desc": "Klare Führung für natürliche Ausdrücke." },
+        { "title": "Hochwertiges Licht", "desc": "Schmeichelhafte Setups für jede Person." },
+        { "title": "Schnelle Abgabe", "desc": "Auswahl und Bearbeitung pünktlich." }
+      ] },
+      "ctaHeading": "Bereit für neue Porträts?",
+      "ctaSubheading": "Wir erstellen Porträts, die Ihre beste Seite zeigen"
+    },
+    "food": {
+      "title": "Food-Fotografie",
+      "heroSubtitle": "Professionelle Food-Fotografie, die Gerichte unwiderstehlich macht. Perfekt für Restaurants, Menüs und Inhalte.",
+      "servicesHeading": "Unsere Food-Fotografie-Services",
+      "servicesSubheading": "Professionelle Services, die Ihre Kreationen am appetitlichsten zeigen",
+      "cards": {
+        "menus": { "title": "Restaurant-Menüs", "description": "Menüfotografie, die Appetit macht", "features": ["Professionelles Licht", "Food-Styling", "Hochauflösende Bilder", "Schnelle Lieferung"] },
+        "content": { "title": "Kulinarischer Content", "description": "Food-Blogs und Social Media Fotografie", "features": ["Instagram-fertige Bilder", "Behind-the-Scenes", "Rezeptfotografie", "Brand-Storytelling"] },
+        "product": { "title": "Produktfotografie", "description": "Lebensmittelprodukte und Zutaten", "features": ["Packaging-Fotografie", "Zutaten-Shots", "E-Commerce-ready", "Lifestyle-Bilder"] }
+      },
+      "portfolioHeading": "Food-Fotografie Portfolio",
+      "portfolioSubheading": "Entdecken Sie unsere köstliche Food-Kollektion",
+      "whyHeading": "Warum Unsere Food-Fotografie?",
+      "why": { "items": [
+        { "title": "Kulinarische Expertise", "desc": "Verständnis für Präsentation und Ästhetik." },
+        { "title": "Profi-Ausrüstung", "desc": "Spezialisiertes Licht und Equipment für perfekte Ergebnisse." },
+        { "title": "Schnelle Lieferung", "desc": "Schnelle Turnarounds für Menüs und Marketing." }
+      ]},
+      "ctaHeading": "Bereit, Ihr Essen köstlich aussehen zu lassen?",
+      "ctaSubheading": "Wir schaffen appetitanregende Bilder, die Kunden hungrig machen"
+    },
+    "landscape": {
+      "title": "Landschaftsfotografie",
+      "heroSubtitle": "Fangen Sie die Schönheit der Natur ein. Von Bergen bis Stränden – wir bringen die Natur zum Leben.",
+      "servicesHeading": "Unsere Landschafts-Services",
+      "servicesSubheading": "Professionelle Fotografie, die die atemberaubende Natur zeigt",
+      "cards": {
+        "nature": { "title": "Natur", "description": "Berge, Wälder und Naturlandschaften", "features": ["Goldene Stunde", "HDR-Verarbeitung", "Weitwinkel", "Naturschutz"] },
+        "seascapes": { "title": "Meereslandschaften", "description": "Ozeanblicke und Küstenfotografie", "features": ["Sonnenauf-/untergänge", "Langzeitbelichtung", "Küstenorte", "Wetter-Optimierung"] },
+        "cityscapes": { "title": "Stadtlandschaften", "description": "Urbane Landschaften und Stadtansichten", "features": ["Nachtfotografie", "Architektur-Fokus", "Urbane Erkundung", "Lichtspuren"] }
+      },
+      "portfolioHeading": "Landschafts-Portfolio",
+      "portfolioSubheading": "Entdecken Sie unsere eindrucksvolle Landschaftskollektion",
+      "whyHeading": "Warum Unsere Landschaftsfotografie?",
+      "why": { "items": [
+        { "title": "Natur-Expertise", "desc": "Fundiertes Wissen über Licht und Komposition." },
+        { "title": "Profi-Ausrüstung", "desc": "Hochwertige Kameras und Objektive für beeindruckende Ergebnisse." },
+        { "title": "Perfektes Timing", "desc": "Know-how zu goldenen Stunden und optimalen Bedingungen." }
+      ]},
+      "ctaHeading": "Bereit, die Schönheit der Natur festzuhalten?",
+      "ctaSubheading": "Wir schaffen beeindruckende Landschaftsbilder der Naturwunder der Welt"
+    },
+    "commercial": {
+      "title": "Kommerzielle Fotografie",
+      "heroSubtitle": "Professionelle Fotografie für Unternehmen und Marken. Wir schaffen visuelle Inhalte, die Ergebnisse liefern.",
+      "servicesHeading": "Unsere kommerziellen Services",
+      "servicesSubheading": "Services, die Unternehmen hervorheben und Zielgruppen erreichen",
+      "cards": {
+        "product": { "title": "Produktfotografie", "description": "Produktfotos für E-Commerce und Marketing", "features": ["Studio-Lichtsetup", "360°-Ansichten", "Lifestyle-Shots", "E-Commerce-ready"] },
+        "corporate": { "title": "Corporate Fotografie", "description": "Professionelle Business- und Teamfotos", "features": ["Headshots", "Teamfotos", "Büroumfeld", "Markenkonsistenz"] },
+        "brand": { "title": "Brand-Fotografie", "description": "Visuelles Storytelling für Ihre Marke", "features": ["Markenidentität", "Marketingmaterialien", "Social-Content", "Kampagnenfotografie"] }
+      },
+      "portfolioHeading": "Kommerzielles Portfolio",
+      "portfolioSubheading": "Entdecken Sie unsere professionelle kommerzielle Sammlung",
+      "whyHeading": "Warum Unsere kommerzielle Fotografie?",
+      "why": { "items": [
+        { "title": "Business-Fokus", "desc": "Spezialisiert auf Fotografie mit Geschäftswirkung." },
+        { "title": "Profi-Ausrüstung", "desc": "High-End-Equipment und Studio-Setup für Premium-Ergebnisse." },
+        { "title": "Schnelle Abwicklung", "desc": "Schnelle Lieferung für Deadlines und Marketing." }
+      ]},
+      "ctaHeading": "Bereit, Ihre Marke zu stärken?",
+      "ctaSubheading": "Wir schaffen starke Bilder, die Ihre Geschäftsziele unterstützen"
+    }
+  }
+}

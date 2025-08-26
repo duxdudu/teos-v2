@@ -1,28 +1,47 @@
 "use client";
 
 import { ArrowLeft, Camera, Building2, Phone, Mail, Star, CheckCircle } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import Image from "next/image";
+import LightboxDialog from "@/components/LightboxDialog";
+import React from "react";
 
 export default function ArchitecturalServices() {
+  const { t } = useTranslation();
   const services = [
     {
       icon: Building2,
-      title: "Exterior Photography",
-      description: "Stunning exterior shots of buildings and structures",
-      features: ["Golden hour photography", "Drone aerial shots", "HDR processing", "Professional editing"]
+      title: t('servicesPages.architectural.cards.exterior.title'),
+      description: t('servicesPages.architectural.cards.exterior.description'),
+      features: [
+        t('servicesPages.architectural.cards.exterior.features.0'),
+        t('servicesPages.architectural.cards.exterior.features.1'),
+        t('servicesPages.architectural.cards.exterior.features.2'),
+        t('servicesPages.architectural.cards.exterior.features.3')
+      ]
     },
     {
       icon: Camera,
-      title: "Interior Photography",
-      description: "Professional interior architectural photography",
-      features: ["Wide-angle lenses", "Natural light optimization", "Furniture staging", "Color correction"]
+      title: t('servicesPages.architectural.cards.interior.title'),
+      description: t('servicesPages.architectural.cards.interior.description'),
+      features: [
+        t('servicesPages.architectural.cards.interior.features.0'),
+        t('servicesPages.architectural.cards.interior.features.1'),
+        t('servicesPages.architectural.cards.interior.features.2'),
+        t('servicesPages.architectural.cards.interior.features.3')
+      ]
     },
     {
       icon: Building2,
-      title: "Real Estate",
-      description: "High-quality real estate photography",
-      features: ["Virtual tours", "Before/after shots", "Marketing materials", "Quick turnaround"]
+      title: t('servicesPages.architectural.cards.realEstate.title'),
+      description: t('servicesPages.architectural.cards.realEstate.description'),
+      features: [
+        t('servicesPages.architectural.cards.realEstate.features.0'),
+        t('servicesPages.architectural.cards.realEstate.features.1'),
+        t('servicesPages.architectural.cards.realEstate.features.2'),
+        t('servicesPages.architectural.cards.realEstate.features.3')
+      ]
     }
   ];
 
@@ -35,19 +54,22 @@ export default function ArchitecturalServices() {
     "/Commercial6.jpg"
   ];
 
+  const [isLightboxOpen, setIsLightboxOpen] = React.useState(false);
+  const [lightboxIndex, setLightboxIndex] = React.useState(0);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       {/* Header */}
       <header className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors">
-              <ArrowLeft className="w-5 h-5" />
-              <span className="font-medium">Back to Home</span>
+          <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-4 py-3 sm:py-0 min-h-16">
+            <Link href="/" className="flex items-center space-x-1.5 sm:space-x-2 text-gray-600 hover:text-blue-600 transition-colors">
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="font-medium">{t('servicesPages.common.back')}</span>
             </Link>
-            <div className="flex items-center space-x-2">
-              <Camera className="w-6 h-6 text-purple-500" />
-              <h1 className="text-xl font-bold text-gray-900 dark:text-white">Architectural Photography</h1>
+            <div className="flex items-center space-x-1.5 sm:space-x-2">
+              <Camera className="w-5 h-5 sm:w-6 sm:h-6 text-purple-500" />
+              <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">{t('servicesPages.architectural.title')}</h1>
             </div>
           </div>
         </div>
@@ -70,12 +92,11 @@ export default function ArchitecturalServices() {
             <div className="flex items-center justify-center space-x-3 mb-6">
               <Building2 className="w-12 h-12 text-purple-400" />
               <h1 className="text-5xl sm:text-7xl font-bold">
-                Architectural Photography
+                {t('servicesPages.architectural.title')}
               </h1>
             </div>
             <p className="text-xl sm:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
-              Capturing the beauty and essence of architectural design through professional photography. 
-              We showcase buildings, structures, and spaces in their best light.
+              {t('servicesPages.architectural.heroSubtitle')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
               <a 
@@ -83,14 +104,14 @@ export default function ArchitecturalServices() {
                 className="flex items-center space-x-2 bg-purple-600 hover:bg-purple-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
               >
                 <Phone className="w-5 h-5" />
-                <span>Call Now</span>
+                <span>{t('servicesPages.common.callNow')}</span>
               </a>
               <a 
                 href="mailto:teofly@gmail.com"
                 className="flex items-center space-x-2 bg-white text-purple-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
               >
                 <Mail className="w-5 h-5" />
-                <span>Email Us</span>
+                <span>{t('servicesPages.common.emailUs')}</span>
               </a>
             </div>
           </div>
@@ -102,10 +123,10 @@ export default function ArchitecturalServices() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Our Architectural Services
+              {t('servicesPages.architectural.servicesHeading')}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Professional architectural photography services tailored to showcase your projects in the best possible light
+              {t('servicesPages.architectural.servicesSubheading')}
             </p>
           </div>
 
@@ -140,16 +161,16 @@ export default function ArchitecturalServices() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Portfolio Gallery
+              {t('servicesPages.architectural.portfolioHeading')}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300">
-              Explore our architectural photography portfolio
+              {t('servicesPages.architectural.portfolioSubheading')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {portfolioImages.map((image, index) => (
-              <div key={index} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105">
+              <button onClick={() => { setLightboxIndex(index); setIsLightboxOpen(true); }} key={index} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-purple-400">
                 <div className="aspect-[4/3] relative">
                   <Image
                     src={image}
@@ -157,21 +178,29 @@ export default function ArchitecturalServices() {
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute inset-0 bg-black/30 lg:bg-black/0 lg:group-hover:bg-black/30 transition-all duration-300" />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
                     <div className="bg-white/90 dark:bg-gray-900/90 rounded-lg p-4 text-center">
                       <Camera className="w-8 h-8 text-purple-600 mx-auto mb-2" />
                       <p className="text-sm font-semibold text-gray-900 dark:text-white">
-                        View Details
+                        {t('servicesPages.common.viewDetails')}
                       </p>
                     </div>
                   </div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
       </section>
+
+      <LightboxDialog
+        images={portfolioImages.map((src, i) => ({ src, alt: `Architectural Photography ${i + 1}` }))}
+        isOpen={isLightboxOpen}
+        startIndex={lightboxIndex}
+        onClose={() => setIsLightboxOpen(false)}
+        onNavigate={(i) => setLightboxIndex(i)}
+      />
 
       {/* Why Choose Us */}
       <section className="py-20 bg-white dark:bg-gray-900">
@@ -179,7 +208,7 @@ export default function ArchitecturalServices() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
-                Why Choose Our Architectural Photography?
+                {t('servicesPages.architectural.whyHeading')}
               </h2>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
@@ -188,10 +217,10 @@ export default function ArchitecturalServices() {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                      Professional Expertise
+                      {t('servicesPages.architectural.why.items.0.title')}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300">
-                      Years of experience in architectural photography with specialized equipment and techniques.
+                      {t('servicesPages.architectural.why.items.0.desc')}
                     </p>
                   </div>
                 </div>
@@ -201,10 +230,10 @@ export default function ArchitecturalServices() {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                      High-Quality Equipment
+                      {t('servicesPages.architectural.why.items.1.title')}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300">
-                      State-of-the-art cameras, lenses, and lighting equipment for stunning results.
+                      {t('servicesPages.architectural.why.items.1.desc')}
                     </p>
                   </div>
                 </div>
@@ -214,10 +243,10 @@ export default function ArchitecturalServices() {
                   </div>
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                      Fast Turnaround
+                      {t('servicesPages.architectural.why.items.2.title')}
                     </h3>
                     <p className="text-gray-600 dark:text-gray-300">
-                      Quick delivery of edited photos without compromising on quality.
+                      {t('servicesPages.architectural.why.items.2.desc')}
                     </p>
                   </div>
                 </div>
@@ -241,10 +270,10 @@ export default function ArchitecturalServices() {
       <section className="py-20 bg-gradient-to-r from-purple-600 to-blue-600">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Capture Your Architectural Vision?
+            {t('servicesPages.architectural.ctaHeading')}
           </h2>
           <p className="text-xl text-purple-100 mb-8">
-            Let&apos;s create stunning architectural photography that showcases your projects in their best light
+            {t('servicesPages.architectural.ctaSubheading')}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
             <a 
@@ -252,14 +281,14 @@ export default function ArchitecturalServices() {
               className="flex items-center space-x-2 bg-white text-purple-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
               <Phone className="w-5 h-5" />
-              <span>Call Now</span>
+              <span>{t('servicesPages.common.callNow')}</span>
             </a>
             <a 
               href="mailto:teofly@gmail.com"
               className="flex items-center space-x-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-purple-600 transition-all duration-300 transform hover:scale-105"
             >
               <Mail className="w-5 h-5" />
-              <span>Email Us</span>
+              <span>{t('servicesPages.common.emailUs')}</span>
             </a>
           </div>
         </div>

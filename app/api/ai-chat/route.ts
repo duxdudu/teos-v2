@@ -46,7 +46,11 @@ Always be helpful, professional, and encourage clients to contact the business f
 
 export async function POST(request: NextRequest) {
   try {
-    const { message, conversationHistory } = await request.json();
+    const { message, conversationHistory, lang } = await request.json();
+
+    // Determine target language: prefer explicit param; otherwise detect from user message
+    const detected = detectLanguage(message);
+    const finalLang = (lang || detected || 'en') as string;
 
     if (!message) {
       return NextResponse.json(
@@ -73,13 +77,13 @@ export async function POST(request: NextRequest) {
     try {
       if (aiProvider === 'groq' && groqApiKey) {
         console.log('Using Groq API');
-        aiResponse = await callGroqAPI(message, conversationHistory, groqApiKey);
+        aiResponse = await callGroqAPI(message, conversationHistory, groqApiKey, finalLang);
       } else if (openaiApiKey) {
         console.log('Using OpenAI API');
-        aiResponse = await callOpenAIAPI(message, conversationHistory, openaiApiKey);
+        aiResponse = await callOpenAIAPI(message, conversationHistory, openaiApiKey, finalLang);
       } else {
         console.log('Falling back to rule-based responses');
-        aiResponse = generateFallbackResponse(message);
+        aiResponse = generateFallbackResponse(message, finalLang);
       }
     } catch (error) {
       console.error('AI API Error:', error);
@@ -97,7 +101,7 @@ export async function POST(request: NextRequest) {
   }
 }
 
-async function callOpenAIAPI(message: string, conversationHistory: any[], apiKey: string) {
+async function callOpenAIAPI(message: string, conversationHistory: Array<{role: string, content: string}>, apiKey: string, lang?: string) {
   try {
     const response = await fetch('https://api.openai.com/v1/chat/completions', {
       method: 'POST',
@@ -110,7 +114,7 @@ async function callOpenAIAPI(message: string, conversationHistory: any[], apiKey
         messages: [
           {
             role: 'system',
-            content: PHOTOGRAPHY_CONTEXT
+            content: `${PHOTOGRAPHY_CONTEXT}\n\nPlease respond in a professional, concise tone in the user's language preference: ${lang || 'en'}. If unclear, infer from the last user message. Avoid switching languages mid-conversation.`
           },
           ...conversationHistory.map(msg => ({
             role: msg.role,
@@ -138,7 +142,7 @@ async function callOpenAIAPI(message: string, conversationHistory: any[], apiKey
   }
 }
 
-async function callGroqAPI(message: string, conversationHistory: any[], apiKey: string) {
+async function callGroqAPI(message: string, conversationHistory: Array<{role: string, content: string}>, apiKey: string, lang?: string) {
   try {
     const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
       method: 'POST',
@@ -151,7 +155,7 @@ async function callGroqAPI(message: string, conversationHistory: any[], apiKey: 
         messages: [
           {
             role: 'system',
-            content: PHOTOGRAPHY_CONTEXT
+            content: `${PHOTOGRAPHY_CONTEXT}\n\nPlease respond in a professional, concise tone in the user's language preference: ${lang || 'en'}. If unclear, infer from the last user message. Avoid switching languages mid-conversation.`
           },
           ...conversationHistory.map(msg => ({
             role: msg.role,
@@ -179,49 +183,78 @@ async function callGroqAPI(message: string, conversationHistory: any[], apiKey: 
   }
 }
 
-function generateFallbackResponse(message: string): string {
+function generateFallbackResponse(message: string, lang?: string): string {
   const lowerMessage = message.toLowerCase();
+  const isFR = (lang || '').startsWith('fr');
   
   // Wedding photography
   if (lowerMessage.includes('wedding') || lowerMessage.includes('marriage')) {
-    return "Wedding photography is one of our specialties! We offer full-day coverage starting from $800, including engagement sessions and bridal portraits. Our packages include professional editing and high-quality prints. Would you like to discuss your specific wedding date and requirements? Contact us at helloteofly@gmail.com for a custom quote!";
+    return isFR
+      ? "La photographie de mariage est l'une de nos spécialités ! Nous proposons une couverture de la journée à partir de 800 $, incluant séances de fiançailles et portraits de mariée. Nos forfaits comprennent une retouche professionnelle et des tirages de haute qualité. Voulez-vous discuter de votre date et de vos besoins ? Contactez-nous à helloteofly@gmail.com pour un devis sur mesure."
+      : "Wedding photography is one of our specialties! We offer full-day coverage starting from $800, including engagement sessions and bridal portraits. Our packages include professional editing and high-quality prints. Would you like to discuss your specific wedding date and requirements? Contact us at helloteofly@gmail.com for a custom quote!";
   }
   
   // Portrait photography
   if (lowerMessage.includes('portrait') || lowerMessage.includes('headshot') || lowerMessage.includes('family')) {
-    return "Portrait photography sessions start from $150 for a 1-hour session. We specialize in professional headshots, family portraits, and creative portraits. We can shoot at our studio or on location. Would you like to book a session? Contact us to discuss your vision and schedule!";
+    return isFR
+      ? "Les séances de portrait commencent à 150 $ pour 1 heure. Nous sommes spécialisés dans les portraits professionnels, de famille et créatifs. Séances en studio ou en extérieur. Souhaitez‑vous réserver ? Contactez‑nous pour discuter de votre projet et planifier une date."
+      : "Portrait photography sessions start from $150 for a 1-hour session. We specialize in professional headshots, family portraits, and creative portraits. We can shoot at our studio or on location. Would you like to book a session? Contact us to discuss your vision and schedule!";
   }
   
   // Event photography
   if (lowerMessage.includes('event') || lowerMessage.includes('party') || lowerMessage.includes('corporate')) {
-    return "Event photography coverage starts from $200 per hour. We cover corporate events, parties, celebrations, and special occasions. We provide professional equipment and quick turnaround times. Contact us to discuss your event details and get a custom quote!";
+    return isFR
+      ? "La couverture d'événements commence à 200 $/heure. Nous couvrons événements d'entreprise, fêtes et occasions spéciales, avec matériel professionnel et délais rapides. Contactez‑nous pour un devis personnalisé."
+      : "Event photography coverage starts from $200 per hour. We cover corporate events, parties, celebrations, and special occasions. We provide professional equipment and quick turnaround times. Contact us to discuss your event details and get a custom quote!";
   }
   
   // Commercial photography
   if (lowerMessage.includes('commercial') || lowerMessage.includes('business') || lowerMessage.includes('product')) {
-    return "Commercial photography services start from $300 per hour. We specialize in product photography, business branding, and marketing materials. Our work helps businesses showcase their products professionally. Contact us to discuss your commercial photography needs!";
+    return isFR
+      ? "La photographie commerciale démarre à 300 $/heure. Spécialistes des produits, du branding et des supports marketing pour valoriser votre activité. Contactez‑nous pour discuter de vos besoins."
+      : "Commercial photography services start from $300 per hour. We specialize in product photography, business branding, and marketing materials. Our work helps businesses showcase their products professionally. Contact us to discuss your commercial photography needs!";
   }
   
   // Food photography
   if (lowerMessage.includes('food') || lowerMessage.includes('restaurant') || lowerMessage.includes('culinary')) {
-    return "Food photography sessions start from $250. We create stunning images for restaurant menus, culinary businesses, and food blogs. Our expertise includes proper lighting and styling to make food look irresistible. Contact us to discuss your food photography project!";
+    return isFR
+      ? "Les séances de photographie culinaire commencent à 250 $. Images soignées pour menus, entreprises culinaires et blogs, avec éclairage et stylisme adaptés. Contactez‑nous pour votre projet culinaire."
+      : "Food photography sessions start from $250. We create stunning images for restaurant menus, culinary businesses, and food blogs. Our expertise includes proper lighting and styling to make food look irresistible. Contact us to discuss your food photography project!";
   }
   
   // Pricing
   if (lowerMessage.includes('price') || lowerMessage.includes('cost') || lowerMessage.includes('how much')) {
-    return "Our photography services have various pricing tiers:\n• Wedding packages: from $800\n• Portrait sessions: from $150\n• Event coverage: from $200/hour\n• Commercial: from $300/hour\n• Food photography: from $250\n• Landscape: from $180\n\nContact us for custom quotes based on your specific needs!";
+    return isFR
+      ? "Nos services de photographie proposent plusieurs niveaux de tarification :\n• Mariage : à partir de 800 $\n• Portrait : à partir de 150 $\n• Événement : à partir de 200 $/h\n• Commercial : à partir de 300 $/h\n• Culinaire : à partir de 250 $\n• Paysage : à partir de 180 $\n\nContactez‑nous pour un devis personnalisé selon vos besoins."
+      : "Our photography services have various pricing tiers:\n• Wedding packages: from $800\n• Portrait sessions: from $150\n• Event coverage: from $200/hour\n• Commercial: from $300/hour\n• Food photography: from $250\n• Landscape: from $180\n\nContact us for custom quotes based on your specific needs!";
   }
   
   // Booking
   if (lowerMessage.includes('book') || lowerMessage.includes('schedule') || lowerMessage.includes('appointment')) {
-    return "To book a photography session, please contact us at helloteofly@gmail.com or call us. We'll discuss your requirements, provide a custom quote, and schedule your preferred date and location. We're flexible with scheduling and locations!";
+    return isFR
+      ? "Pour réserver une séance, contactez‑nous à helloteofly@gmail.com ou par téléphone. Nous discuterons de vos besoins, proposerons un devis sur mesure et fixerons une date et un lieu à votre convenance."
+      : "To book a photography session, please contact us at helloteofly@gmail.com or call us. We'll discuss your requirements, provide a custom quote, and schedule your preferred date and location. We're flexible with scheduling and locations!";
   }
   
   // General photography tips
   if (lowerMessage.includes('tip') || lowerMessage.includes('advice') || lowerMessage.includes('help')) {
-    return "Here are some photography tips:\n• Natural lighting works best for portraits\n• Plan outfits that complement your location\n• Consider the time of day for outdoor shoots\n• Bring props or accessories for personalization\n• Relax and be yourself during sessions\n\nNeed specific advice? Contact us for personalized guidance!";
+    return isFR
+      ? "Voici quelques conseils photo :\n• La lumière naturelle convient le mieux aux portraits\n• Prévoyez des tenues assorties au lieu\n• Tenez compte de l'heure pour l'extérieur\n• Apportez des accessoires pour personnaliser\n• Restez détendu et naturel\n\nBesoin d'un conseil précis ? Contactez‑nous pour un accompagnement personnalisé."
+      : "Here are some photography tips:\n• Natural lighting works best for portraits\n• Plan outfits that complement your location\n• Consider the time of day for outdoor shoots\n• Bring props or accessories for personalization\n• Relax and be yourself during sessions\n\nNeed specific advice? Contact us for personalized guidance!";
   }
   
   // Default response
-  return "Thank you for your message! I'm here to help with any photography-related questions. I can assist with pricing, services, booking, and photography tips. For specific inquiries or to book a session, please contact us at helloteofly@gmail.com. How else can I help you today?";
+  return isFR
+    ? "Merci pour votre message ! Je vous aide pour toute question liée à la photographie : tarifs, services, réservation et conseils. Pour une demande précise ou pour réserver une séance, écrivez‑nous à helloteofly@gmail.com. Comment puis‑je vous aider davantage ?"
+    : "Thank you for your message! I'm here to help with any photography-related questions. I can assist with pricing, services, booking, and photography tips. For specific inquiries or to book a session, please contact us at helloteofly@gmail.com. How else can I help you today?";
+}
+
+function detectLanguage(text: string): string | undefined {
+  const sample = (text || '').toLowerCase();
+  // Very lightweight heuristic for French detection
+  const frHints = ['bonjour', 'salut', 'merci', 's’il', "s'il", 'réservation', 'tarif', 'prix', 'photographie', 'séance', 'disponibilité', 'aide'];
+  if (frHints.some(h => sample.includes(h)) || /[éèêàùôîç]/.test(sample)) {
+    return 'fr';
+  }
+  return undefined;
 }

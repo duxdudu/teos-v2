@@ -3,26 +3,45 @@
 import { ArrowLeft, Camera, Building, Phone, Mail, Star, CheckCircle, Briefcase, ShoppingBag } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import LightboxDialog from "@/components/LightboxDialog";
+import { useTranslation } from "react-i18next";
+import React from "react";
 
 export default function CommercialServices() {
+  const { t } = useTranslation();
   const services = [
     {
       icon: ShoppingBag,
-      title: "Product Photography",
-      description: "Professional product shots for e-commerce and marketing",
-      features: ["Studio lighting setup", "360° product views", "Lifestyle shots", "E-commerce ready"]
+      title: t('servicesPages.commercial.cards.product.title'),
+      description: t('servicesPages.commercial.cards.product.description'),
+      features: [
+        t('servicesPages.commercial.cards.product.features.0'),
+        t('servicesPages.commercial.cards.product.features.1'),
+        t('servicesPages.commercial.cards.product.features.2'),
+        t('servicesPages.commercial.cards.product.features.3')
+      ]
     },
     {
       icon: Building,
-      title: "Corporate Photography",
-      description: "Professional business and team photos",
-      features: ["Headshots", "Team photos", "Office environment", "Brand consistency"]
+      title: t('servicesPages.commercial.cards.corporate.title'),
+      description: t('servicesPages.commercial.cards.corporate.description'),
+      features: [
+        t('servicesPages.commercial.cards.corporate.features.0'),
+        t('servicesPages.commercial.cards.corporate.features.1'),
+        t('servicesPages.commercial.cards.corporate.features.2'),
+        t('servicesPages.commercial.cards.corporate.features.3')
+      ]
     },
     {
       icon: Briefcase,
-      title: "Brand Photography",
-      description: "Visual storytelling for your brand",
-      features: ["Brand identity", "Marketing materials", "Social media content", "Campaign photography"]
+      title: t('servicesPages.commercial.cards.brand.title'),
+      description: t('servicesPages.commercial.cards.brand.description'),
+      features: [
+        t('servicesPages.commercial.cards.brand.features.0'),
+        t('servicesPages.commercial.cards.brand.features.1'),
+        t('servicesPages.commercial.cards.brand.features.2'),
+        t('servicesPages.commercial.cards.brand.features.3')
+      ]
     }
   ];
 
@@ -35,21 +54,24 @@ export default function CommercialServices() {
     "/Commercial6.jpg"
   ];
 
+  const [isLightboxOpen, setIsLightboxOpen] = React.useState(false);
+  const [lightboxIndex, setLightboxIndex] = React.useState(0);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 dark:from-gray-900 dark:to-gray-800">
       {/* Header */}
       <header className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center space-x-2 text-gray-600 hover:text-blue-600 transition-colors">
-              <ArrowLeft className="w-5 h-5" />
-              <span className="font-medium">Back to Home</span>
+          <div className="flex items-center justify-between gap-2 sm:gap-4 py-2 sm:py-0 min-h-12 sm:min-h-16">
+            <Link href="/" className="flex items-center space-x-1 sm:space-x-2 text-gray-600 hover:text-blue-600 transition-colors">
+              <ArrowLeft className="w-3 h-3 sm:w-5 sm:h-5" />
+              <span className="text-sm sm:text-base font-medium">{t('servicesPages.common.back')}</span>
             </Link>
-            <div className="flex items-center space-x-2">
-              <Camera className="w-6 h-6 text-blue-500" />
-              <h1 className="text-xl font-bold text-gray-900 dark:text-white">Commercial Photography</h1>
+            <div className="flex items-center space-x-1 sm:space-x-2">
+              <Camera className="w-4 h-4 sm:w-6 sm:h-6 text-blue-500" />
+              <h1 className="text-base sm:text-xl font-bold text-gray-900 dark:text-white">{t('servicesPages.commercial.title')}</h1>
             </div>
-          </div>
+          </div>  
         </div>
       </header>
 
@@ -70,12 +92,11 @@ export default function CommercialServices() {
             <div className="flex items-center justify-center space-x-3 mb-6">
               <Building className="w-12 h-12 text-blue-400" />
               <h1 className="text-5xl sm:text-7xl font-bold">
-                Commercial Photography
+                {t('servicesPages.commercial.title')}
               </h1>
             </div>
             <p className="text-xl sm:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
-              Professional commercial photography for businesses and brands. 
-              We create compelling visual content that drives results.
+              {t('servicesPages.commercial.heroSubtitle')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
               <a 
@@ -83,14 +104,14 @@ export default function CommercialServices() {
                 className="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
               >
                 <Phone className="w-5 h-5" />
-                <span>Call Now</span>
+                <span>{t('servicesPages.common.callNow')}</span>
               </a>
               <a 
                 href="mailto:teofly@gmail.com"
                 className="flex items-center space-x-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
               >
                 <Mail className="w-5 h-5" />
-                <span>Email Us</span>
+                <span>{t('servicesPages.common.emailUs')}</span>
               </a>
             </div>
           </div>
@@ -102,10 +123,10 @@ export default function CommercialServices() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Our Commercial Photography Services
+              {t('servicesPages.commercial.servicesHeading')}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Professional commercial photography services that help businesses stand out and connect with their audience
+              {t('servicesPages.commercial.servicesSubheading')}
             </p>
           </div>
 
@@ -140,16 +161,16 @@ export default function CommercialServices() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Commercial Photography Portfolio
+              {t('servicesPages.commercial.portfolioHeading')}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300">
-              Explore our professional commercial photography collection
+              {t('servicesPages.commercial.portfolioSubheading')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {portfolioImages.map((image, index) => (
-              <div key={index} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105">
+              <button onClick={() => { setLightboxIndex(index); setIsLightboxOpen(true); }} key={index} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-blue-400">
                 <div className="aspect-[4/3] relative">
                   <Image
                     src={image}
@@ -157,21 +178,29 @@ export default function CommercialServices() {
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute inset-0 bg-black/30 lg:bg-black/0 lg:group-hover:bg-black/30 transition-all duration-300" />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
                     <div className="bg-white/90 dark:bg-gray-900/90 rounded-lg p-4 text-center">
                       <Building className="w-8 h-8 text-blue-600 mx-auto mb-2" />
                       <p className="text-sm font-semibold text-gray-900 dark:text-white">
-                        View Details
+                        {t('servicesPages.common.viewDetails')}
                       </p>
                     </div>
                   </div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
       </section>
+
+      <LightboxDialog
+        images={portfolioImages.map((src, i) => ({ src, alt: `Commercial Photography ${i + 1}` }))}
+        isOpen={isLightboxOpen}
+        startIndex={lightboxIndex}
+        onClose={() => setIsLightboxOpen(false)}
+        onNavigate={(i) => setLightboxIndex(i)}
+      />
 
       {/* Why Choose Us */}
       <section className="py-20 bg-white dark:bg-gray-900">
@@ -179,7 +208,7 @@ export default function CommercialServices() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
-                Why Choose Our Commercial Photography?
+                {t('servicesPages.commercial.whyHeading')}
               </h2>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
@@ -187,12 +216,8 @@ export default function CommercialServices() {
                     <Star className="w-6 h-6 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                      Business Focus
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      Specialized in commercial photography that drives business results.
-                    </p>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{t('servicesPages.commercial.why.items.0.title')}</h3>
+                    <p className="text-gray-600 dark:text-gray-300">{t('servicesPages.commercial.why.items.0.desc')}</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
@@ -200,12 +225,8 @@ export default function CommercialServices() {
                     <Camera className="w-6 h-6 text-indigo-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                      Professional Equipment
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      High-end equipment and studio setup for commercial-grade results.
-                    </p>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{t('servicesPages.commercial.why.items.1.title')}</h3>
+                    <p className="text-gray-600 dark:text-gray-300">{t('servicesPages.commercial.why.items.1.desc')}</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
@@ -213,12 +234,8 @@ export default function CommercialServices() {
                     <CheckCircle className="w-6 h-6 text-green-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                      Fast Turnaround
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      Quick delivery to meet your business deadlines and marketing needs.
-                    </p>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{t('servicesPages.commercial.why.items.2.title')}</h3>
+                    <p className="text-gray-600 dark:text-gray-300">{t('servicesPages.commercial.why.items.2.desc')}</p>
                   </div>
                 </div>
               </div>
@@ -241,10 +258,10 @@ export default function CommercialServices() {
       <section className="py-20 bg-gradient-to-r from-blue-600 to-indigo-600">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Elevate Your Brand?
+            {t('servicesPages.commercial.ctaHeading')}
           </h2>
           <p className="text-xl text-blue-100 mb-8">
-            Let&apos;s create compelling commercial photography that drives results for your business
+            {t('servicesPages.commercial.ctaSubheading')}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
             <a 
@@ -252,14 +269,14 @@ export default function CommercialServices() {
               className="flex items-center space-x-2 bg-white text-blue-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
               <Phone className="w-5 h-5" />
-              <span>Call Now</span>
+              <span>{t('servicesPages.common.callNow')}</span>
             </a>
             <a 
               href="mailto:teofly@gmail.com"
               className="flex items-center space-x-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 transform hover:scale-105"
             >
               <Mail className="w-5 h-5" />
-              <span>Email Us</span>
+              <span>{t('servicesPages.common.emailUs')}</span>
             </a>
           </div>
         </div>

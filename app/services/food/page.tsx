@@ -3,26 +3,45 @@
 import { ArrowLeft, Camera, Utensils, Phone, Mail, Star, CheckCircle, ChefHat } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
+import LightboxDialog from "@/components/LightboxDialog";
+import { useTranslation } from "react-i18next";
+import React from "react";
 
 export default function FoodServices() {
+  const { t } = useTranslation();
   const services = [
     {
       icon: Utensils,
-      title: "Restaurant Menus",
-      description: "Professional menu photography that makes dishes irresistible",
-      features: ["Professional lighting setup", "Food styling", "High-resolution images", "Quick delivery"]
+      title: t('servicesPages.food.cards.menus.title'),
+      description: t('servicesPages.food.cards.menus.description'),
+      features: [
+        t('servicesPages.food.cards.menus.features.0'),
+        t('servicesPages.food.cards.menus.features.1'),
+        t('servicesPages.food.cards.menus.features.2'),
+        t('servicesPages.food.cards.menus.features.3')
+      ]
     },
     {
       icon: Camera,
-      title: "Culinary Content",
-      description: "Food blogs and social media photography",
-      features: ["Instagram-ready images", "Behind-the-scenes shots", "Recipe photography", "Brand storytelling"]
+      title: t('servicesPages.food.cards.content.title'),
+      description: t('servicesPages.food.cards.content.description'),
+      features: [
+        t('servicesPages.food.cards.content.features.0'),
+        t('servicesPages.food.cards.content.features.1'),
+        t('servicesPages.food.cards.content.features.2'),
+        t('servicesPages.food.cards.content.features.3')
+      ]
     },
     {
       icon: ChefHat,
-      title: "Product Photography",
-      description: "Food products and ingredients photography",
-      features: ["Packaging photography", "Ingredient shots", "E-commerce ready", "Lifestyle images"]
+      title: t('servicesPages.food.cards.product.title'),
+      description: t('servicesPages.food.cards.product.description'),
+      features: [
+        t('servicesPages.food.cards.product.features.0'),
+        t('servicesPages.food.cards.product.features.1'),
+        t('servicesPages.food.cards.product.features.2'),
+        t('servicesPages.food.cards.product.features.3')
+      ]
     }
   ];
 
@@ -35,19 +54,22 @@ export default function FoodServices() {
     "/Commercial6.jpg"
   ];
 
+  const [isLightboxOpen, setIsLightboxOpen] = React.useState(false);
+  const [lightboxIndex, setLightboxIndex] = React.useState(0);
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50 dark:from-gray-900 dark:to-gray-800">
       {/* Header */}
       <header className="bg-white/95 dark:bg-gray-900/95 backdrop-blur-sm shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
-            <Link href="/" className="flex items-center space-x-2 text-gray-600 hover:text-orange-600 transition-colors">
-              <ArrowLeft className="w-5 h-5" />
-              <span className="font-medium">Back to Home</span>
+          <div className="flex flex-wrap items-center justify-between gap-3 sm:gap-4 py-3 sm:py-0 min-h-16">
+            <Link href="/" className="flex items-center space-x-1.5 sm:space-x-2 text-gray-600 hover:text-orange-600 transition-colors">
+              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
+              <span className="font-medium">{t('servicesPages.common.back')}</span>
             </Link>
-            <div className="flex items-center space-x-2">
-              <Camera className="w-6 h-6 text-orange-500" />
-              <h1 className="text-xl font-bold text-gray-900 dark:text-white">Food Photography</h1>
+            <div className="flex items-center space-x-1.5 sm:space-x-2">
+              <Camera className="w-5 h-5 sm:w-6 sm:h-6 text-orange-500" />
+              <h1 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white">{t('servicesPages.food.title')}</h1>
             </div>
           </div>
         </div>
@@ -70,12 +92,11 @@ export default function FoodServices() {
             <div className="flex items-center justify-center space-x-3 mb-6">
               <Utensils className="w-12 h-12 text-orange-400" />
               <h1 className="text-5xl sm:text-7xl font-bold">
-                Food Photography
+                {t('servicesPages.food.title')}
               </h1>
             </div>
             <p className="text-xl sm:text-2xl text-gray-200 mb-8 max-w-3xl mx-auto">
-              Professional food photography that makes dishes look absolutely irresistible. 
-              Perfect for restaurants, menus, and culinary content.
+              {t('servicesPages.food.heroSubtitle')}
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
               <a 
@@ -83,14 +104,14 @@ export default function FoodServices() {
                 className="flex items-center space-x-2 bg-orange-600 hover:bg-orange-700 text-white px-8 py-4 rounded-lg font-semibold transition-all duration-300 transform hover:scale-105"
               >
                 <Phone className="w-5 h-5" />
-                <span>Call Now</span>
+                <span>{t('servicesPages.common.callNow')}</span>
               </a>
               <a 
                 href="mailto:teofly@gmail.com"
                 className="flex items-center space-x-2 bg-white text-orange-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105"
               >
                 <Mail className="w-5 h-5" />
-                <span>Email Us</span>
+                <span>{t('servicesPages.common.emailUs')}</span>
               </a>
             </div>
           </div>
@@ -102,10 +123,10 @@ export default function FoodServices() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Our Food Photography Services
+              {t('servicesPages.food.servicesHeading')}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-              Professional food photography services that showcase your culinary creations in the most appetizing way
+              {t('servicesPages.food.servicesSubheading')}
             </p>
           </div>
 
@@ -140,16 +161,16 @@ export default function FoodServices() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-              Food Photography Portfolio
+              {t('servicesPages.food.portfolioHeading')}
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300">
-              Explore our delicious food photography collection
+              {t('servicesPages.food.portfolioSubheading')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {portfolioImages.map((image, index) => (
-              <div key={index} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105">
+              <button onClick={() => { setLightboxIndex(index); setIsLightboxOpen(true); }} key={index} className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-orange-400">
                 <div className="aspect-[4/3] relative">
                   <Image
                     src={image}
@@ -157,21 +178,29 @@ export default function FoodServices() {
                     fill
                     className="object-cover group-hover:scale-110 transition-transform duration-500"
                   />
-                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-all duration-300" />
-                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  <div className="absolute inset-0 bg-black/30 lg:bg-black/0 lg:group-hover:bg-black/30 transition-all duration-300" />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-opacity duration-300">
                     <div className="bg-white/90 dark:bg-gray-900/90 rounded-lg p-4 text-center">
                       <Utensils className="w-8 h-8 text-orange-600 mx-auto mb-2" />
                       <p className="text-sm font-semibold text-gray-900 dark:text-white">
-                        View Details
+                        {t('servicesPages.common.viewDetails')}
                       </p>
                     </div>
                   </div>
                 </div>
-              </div>
+              </button>
             ))}
           </div>
         </div>
       </section>
+
+      <LightboxDialog
+        images={portfolioImages.map((src, i) => ({ src, alt: `Food Photography ${i + 1}` }))}
+        isOpen={isLightboxOpen}
+        startIndex={lightboxIndex}
+        onClose={() => setIsLightboxOpen(false)}
+        onNavigate={(i) => setLightboxIndex(i)}
+      />
 
       {/* Why Choose Us */}
       <section className="py-20 bg-white dark:bg-gray-900">
@@ -179,7 +208,7 @@ export default function FoodServices() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">
-                Why Choose Our Food Photography?
+                {t('servicesPages.food.whyHeading')}
               </h2>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
@@ -187,12 +216,8 @@ export default function FoodServices() {
                     <Star className="w-6 h-6 text-orange-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                      Culinary Expertise
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      Deep understanding of food presentation and culinary aesthetics.
-                    </p>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{t('servicesPages.food.why.items.0.title')}</h3>
+                    <p className="text-gray-600 dark:text-gray-300">{t('servicesPages.food.why.items.0.desc')}</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
@@ -200,12 +225,8 @@ export default function FoodServices() {
                     <Camera className="w-6 h-6 text-red-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                      Professional Equipment
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      Specialized lighting and equipment for perfect food photography.
-                    </p>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{t('servicesPages.food.why.items.1.title')}</h3>
+                    <p className="text-gray-600 dark:text-gray-300">{t('servicesPages.food.why.items.1.desc')}</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
@@ -213,12 +234,8 @@ export default function FoodServices() {
                     <CheckCircle className="w-6 h-6 text-yellow-600" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
-                      Fast Delivery
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-300">
-                      Quick turnaround times perfect for restaurant menus and marketing.
-                    </p>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">{t('servicesPages.food.why.items.2.title')}</h3>
+                    <p className="text-gray-600 dark:text-gray-300">{t('servicesPages.food.why.items.2.desc')}</p>
                   </div>
                 </div>
               </div>
@@ -241,10 +258,10 @@ export default function FoodServices() {
       <section className="py-20 bg-gradient-to-r from-orange-500 to-red-500">
         <div className="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl font-bold text-white mb-6">
-            Ready to Make Your Food Look Delicious?
+            {t('servicesPages.food.ctaHeading')}
           </h2>
           <p className="text-xl text-orange-100 mb-8">
-            Let&apos;s create mouthwatering food photography that will make your customers hungry
+            {t('servicesPages.food.ctaSubheading')}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6">
             <a 
@@ -252,14 +269,14 @@ export default function FoodServices() {
               className="flex items-center space-x-2 bg-white text-orange-600 px-8 py-4 rounded-lg font-semibold hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg"
             >
               <Phone className="w-5 h-5" />
-              <span>Call Now</span>
+              <span>{t('servicesPages.common.callNow')}</span>
             </a>
             <a 
               href="mailto:teofly@gmail.com"
               className="flex items-center space-x-2 bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg font-semibold hover:bg-white hover:text-orange-600 transition-all duration-300 transform hover:scale-105"
             >
               <Mail className="w-5 h-5" />
-              <span>Email Us</span>
+              <span>{t('servicesPages.common.emailUs')}</span>
             </a>
           </div>
         </div>
