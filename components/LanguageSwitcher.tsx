@@ -86,16 +86,16 @@ export default function LanguageSwitcher() {
         variant="ghost"
         size="sm"
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-2 px-3 py-2 h-auto text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-yellow-500 dark:hover:text-yellow-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 rounded-lg border border-gray-300 dark:border-gray-600"
+        className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-2 h-auto text-xs sm:text-sm font-medium text-gray-700 dark:text-gray-300 hover:text-yellow-500 dark:hover:text-yellow-400 hover:bg-gray-100 dark:hover:bg-gray-800 transition-all duration-200 rounded-lg border border-gray-300 dark:border-gray-600"
         aria-label={t('common.language')}
         aria-expanded={isOpen}
         aria-haspopup="true"
       >
-        <Globe className="w-4 h-4" />
-        <span className="text-lg">{currentLanguage.flag}</span>
+        <Globe className="w-3 h-3 sm:w-4 sm:h-4" />
+        <span className="text-sm sm:text-lg">{currentLanguage.flag}</span>
         <span className="hidden sm:inline-block">{currentLanguage.nativeName}</span>
         <ChevronDown 
-          className={`w-4 h-4 transition-transform duration-200 ${
+          className={`w-3 h-3 sm:w-4 sm:h-4 transition-transform duration-200 ${
             isOpen ? 'rotate-180' : ''
           }`} 
         />

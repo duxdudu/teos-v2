@@ -69,11 +69,18 @@ interface PortfolioProject {
 export default function Home() {
   const { t } = useTranslation();
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
-  const [theme, setTheme] = useState(
-    typeof window !== "undefined" && localStorage.getItem("theme")
-      ? localStorage.getItem("theme")
-      : "dark"
-  );
+  const [theme, setTheme] = useState("dark");
+  const [mounted, setMounted] = useState(false);
+
+  // Handle hydration
+  useEffect(() => {
+    setMounted(true);
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme) {
+      setTheme(savedTheme);
+    }
+  }, []);
+
   // Inside your Home component, add this state
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [loading, setLoading] = useState(true);
@@ -110,12 +117,14 @@ export default function Home() {
 
   // Auto-advance slideshow every 6 seconds
   useEffect(() => {
+    if (!mounted) return;
+    
     const interval = setInterval(() => {
       nextSlide();
     }, 6000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [mounted]);
 
   // Portfolio projects data
   const portfolioProjects: PortfolioProject[] = [
@@ -276,6 +285,8 @@ export default function Home() {
 
   // Scroll to top functionality
   useEffect(() => {
+    if (!mounted) return;
+    
     const handleScroll = () => {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       setShowScrollToTop(scrollTop > 300);
@@ -283,7 +294,12 @@ export default function Home() {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [mounted]);
+
+  // Prevent hydration mismatch
+  if (!mounted) {
+    return null;
+  }
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -390,7 +406,7 @@ This message was sent from the Teoflys Photography website contact form.
             alt="Teoflys Photography Logo" 
             width={120}
             height={120}
-            className="h-16 w-auto ml-2 object-contain "
+            className="h-10 sm:h-12 md:h-14 lg:h-16 w-auto ml-2 object-contain"
           />
         </div>
 

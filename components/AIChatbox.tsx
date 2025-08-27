@@ -371,6 +371,7 @@ export default function AIChatbox({ }: AIChatboxProps) {
             </div>
           </form>
         </div>
+        
       )}
     </>
   );
