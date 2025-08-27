@@ -160,7 +160,7 @@
         "description": "Une magnifique célébration de mariage en plein air remplie d'amour, de rires et de moments inoubliables. Chaque détail a été capturé, de la cérémonie intime à la réception animée.",
         "stats": "MARIAGE • 8 PHOTOS • TERMINÉ",
         "client": "Sarah & John",
-        "date": "Juin 2024"
+        "date": "Juin 2025"
       },
       "portrait-emma": {
         "title": "Portraits Professionnels d'Emma",
@@ -168,7 +168,7 @@
         "description": "Photos professionnelles et branding personnel pour une entrepreneure à succès. Style moderne et épuré capturant la personnalité et le professionnalisme.",
         "stats": "PORTRAIT • 8 PHOTOS • TERMINÉ",
         "client": "Emma Rodriguez",
-        "date": "Mai 2024"
+        "date": "Mai 2025"
       },
       "commercial-restaurant": {
         "title": "Restaurant Nyandungu",
@@ -176,15 +176,15 @@
         "description": "Photographie complète du restaurant incluant des prises de vue intérieures, du stylisme culinaire et des portraits d'équipe. Pack de marque visuelle pour le marketing.",
         "stats": "COMMERCIAL • 9 PHOTOS • TERMINÉ",
         "client": "Bella Vista Restaurant",
-        "date": "Avril 2024"
+        "date": "Avril 2025"
       },
       "event-tech-conference": {
-        "title": "Tech Innovation Summit 2024",
+        "title": "Tech Innovation Summit 2025",
         "category": "Photographie d'Événement",
         "description": "Couverture d'un événement d'entreprise comprenant conférenciers, sessions de réseautage et démonstrations de produits. Documentation professionnelle d'une grande conférence.",
         "stats": "ÉVÉNEMENT • 11 PHOTOS • TERMINÉ",
         "client": "Tech Innovations Inc.",
-        "date": "Mars 2024"
+        "date": "Mars 2025"
       },
       "landscape-mountains": {
         "title": "Paysages Montagneux du Rwanda",
@@ -192,7 +192,7 @@
         "description": "Photographies de paysages à couper le souffle mettant en valeur la beauté naturelle du Rwanda, capturées à l'heure dorée et bleue pour une lumière optimale.",
         "stats": "PAYSAGE • 10 PHOTOS • TERMINÉ",
         "client": "Projet Personnel",
-        "date": "Février 2024"
+        "date": "Février 2025"
       },
       "food-artisan-cafe": {
         "title": "Photographie du Menu Café Artisan",
@@ -200,7 +200,7 @@
         "description": "Photographie culinaire stylisée pour le nouveau menu d'un café local. Chaque plat soigneusement arrangé et éclairé pour mettre en valeur texture et couleur.",
         "stats": "CULINAIRE • 12 PHOTOS • TERMINÉ",
         "client": "Artisan Café",
-        "date": "Janvier 2024"
+        "date": "Janvier 2025"
       }
     }
   },

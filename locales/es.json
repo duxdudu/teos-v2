@@ -160,7 +160,7 @@
         "description": "Una hermosa celebración de boda al aire libre llena de amor, risas y momentos inolvidables. Capturamos cada detalle desde la ceremonia íntima hasta la animada recepción.",
         "stats": "BODA • 8 FOTOS • COMPLETADO",
         "client": "Sarah y John",
-        "date": "Junio 2024"
+        "date": "Junio 2025"
       },
       "portrait-emma": {
         "title": "Retratos Profesionales de Emma",
@@ -168,7 +168,7 @@
         "description": "Retratos profesionales y branding personal para una emprendedora exitosa. Estilo moderno y limpio que captura personalidad y profesionalismo.",
         "stats": "RETRATO • 8 FOTOS • COMPLETADO",
         "client": "Emma Rodriguez",
-        "date": "Mayo 2024"
+        "date": "Mayo 2025"
       },
       "commercial-restaurant": {
         "title": "Restaurante Nyandungu",
@@ -176,7 +176,7 @@
         "description": "Fotografía completa del restaurante incluyendo interiores, estilismo de comida y retratos del equipo. Paquete visual integral para marketing.",
         "stats": "COMERCIAL • 9 FOTOS • COMPLETADO",
         "client": "Bella Vista Restaurant",
-        "date": "Abril 2024"
+        "date": "Abril 2025"
       },
       "event-tech-conference": {
         "title": "Tech Innovation Summit 2024",
@@ -184,7 +184,7 @@
         "description": "Cobertura de evento corporativo incluyendo ponentes, sesiones de networking y demostraciones de productos. Documentación profesional de una gran conferencia.",
         "stats": "EVENTO • 11 FOTOS • COMPLETADO",
         "client": "Tech Innovations Inc.",
-        "date": "Marzo 2024"
+        "date": "Marzo 2025"
       },
       "landscape-mountains": {
         "title": "Paisajes Montañosos de Ruanda",
@@ -192,7 +192,7 @@
         "description": "Fotografía de paisajes impresionante que muestra la belleza natural de Ruanda, capturada durante la hora dorada y azul para una iluminación óptima.",
         "stats": "PAISAJE • 10 FOTOS • COMPLETADO",
         "client": "Proyecto Personal",
-        "date": "Febrero 2024"
+        "date": "Febrero 2025"
       },
       "food-artisan-cafe": {
         "title": "Fotografía del Menú del Café Artisan",
@@ -200,7 +200,7 @@
         "description": "Fotografía de comida estilizada para el nuevo menú de un café local. Cada plato cuidadosamente dispuesto e iluminado para mostrar textura y color.",
         "stats": "COMIDA • 12 FOTOS • COMPLETADO",
         "client": "Artisan Café",
-        "date": "Enero 2024"
+        "date": "Enero 2025"
       }
     }
   },

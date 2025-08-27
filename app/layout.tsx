@@ -19,10 +19,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Teofly Photography",
+  title: "Teos.visual",
   description: "Professional photography services for weddings, portraits, events, and more",
   icons: {
-    icon: '/favicon.ico',
+    icon: '/logo1.png',
   },
 };
 

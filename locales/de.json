@@ -160,7 +160,7 @@
         "description": "Eine wunderschöne Hochzeit im Freien voller Liebe, Lachen und unvergesslicher Momente. Jeder Moment wurde festgehalten – von der intimen Zeremonie bis zur lebhaften Feier.",
         "stats": "HOCHZEIT • 8 FOTOS • ABGESCHLOSSEN",
         "client": "Sarah & John",
-        "date": "Juni 2024"
+        "date": "Juni 2025"
       },
       "portrait-emma": {
         "title": "Emmas professionelle Porträts",
@@ -168,7 +168,7 @@
         "description": "Professionelle Headshots und Personal-Branding-Fotos für eine erfolgreiche Unternehmerin. Moderner, klarer Stil, der Persönlichkeit und Professionalität einfängt.",
         "stats": "PORTRÄT • 8 FOTOS • ABGESCHLOSSEN",
         "client": "Emma Rodriguez",
-        "date": "Mai 2024"
+        "date": "Mai 2025"
       },
       "commercial-restaurant": {
         "title": "Nyandungu Restaurant",
@@ -176,15 +176,15 @@
         "description": "Umfassende Restaurantfotografie inklusive Innenaufnahmen, Food-Styling und Team-Porträts. Umfassendes visuelles Markenpaket für Marketingmaterialien.",
         "stats": "KOMMERZIELL • 9 FOTOS • ABGESCHLOSSEN",
         "client": "Bella Vista Restaurant",
-        "date": "April 2024"
+        "date": "April 2025"
       },
       "event-tech-conference": {
-        "title": "Tech Innovation Summit 2024",
+        "title": "Tech Innovation Summit 2025",
         "category": "Veranstaltungsfotografie",
         "description": "Berichterstattung über eine Firmenveranstaltung, einschließlich Hauptrednern, Networking-Sessions und Produktdemonstrationen. Professionelle Dokumentation einer großen Konferenz.",
         "stats": "EVENT • 11 FOTOS • ABGESCHLOSSEN",
         "client": "Tech Innovations Inc.",
-        "date": "März 2024"
+        "date": "März 2025"
       },
       "landscape-mountains": {
         "title": "Berglandschaften Ruandas",
@@ -192,7 +192,7 @@
         "description": "Atemberaubende Landschaftsfotografie, die die natürliche Schönheit Ruandas zeigt. Aufgenommen während der Goldenen und Blauen Stunde für optimale Lichtverhältnisse.",
         "stats": "LANDSCHAFT • 10 FOTOS • ABGESCHLOSSEN",
         "client": "Persönliches Projekt",
-        "date": "Februar 2024"
+        "date": "Februar 2025"
       },
       "food-artisan-cafe": {
         "title": "Artisan Café Menüfotografie",
@@ -200,7 +200,7 @@
         "description": "Gestylte Food-Fotografie für das neue Menü eines lokalen Cafés. Jedes Gericht sorgfältig arrangiert und ausgeleuchtet, um Textur und Farbe zur Geltung zu bringen.",
         "stats": "FOOD • 12 FOTOS • ABGESCHLOSSEN",
         "client": "Artisan Café",
-        "date": "Januar 2024"
+        "date": "Januar 2025"
       }
     }
   },
